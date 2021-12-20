@@ -28,7 +28,7 @@
     import LeftCatalogCategory from "./LeftCatalogCategory"
     import Catalog from "./Catalog"
     import FilterCatalog from "./FilterCatalog"
-    import breadcrumbs from "../../components/Breadcrumbs/Main"
+    import breadcrumbs from "../Breadcrumbs/MainBreadcrumbs"
 
     export default {
 
@@ -106,10 +106,11 @@
              * Request Products and set Pagination
              */
             getProducts(url){
-                this.$root.getJson(this.buildApiRequest_Url(url))
+                console.log('getProducts')
+                axios.get(this.buildApiRequest_Url(url))
                         .then(response => {
-                            this.setPaginationValues(response);
-                            this.addInProducts(response); //console.log(response)
+                            this.setPaginationValues(response.data);
+                            this.addInProducts(response.data);
                         })
                     .catch(e => {
                         console.log(e)
@@ -153,14 +154,14 @@
              * @param response
              * get response and set Pagination values
              */
-            setPaginationValues(response){
+            setPaginationValues(values){
                 this.pagination = {
-                    prev_page: response.prev_page_url,
-                    next_page: response.next_page_url,
-                    current_page: response.current_page,
-                    last_page: response.last_page_url,
-                    first_page: response.first_page_url,
-                    links: this.linksFiltered(response.links)
+                    prev_page: values.prev_page_url,
+                    next_page: values.next_page_url,
+                    current_page: values.current_page,
+                    last_page: values.last_page_url,
+                    first_page: values.first_page_url,
+                    links: this.linksFiltered(values.links)
                 }
             },
 
@@ -171,6 +172,7 @@
              * @last: "next" link.
              */
             linksFiltered(responseLinks){
+
                 return responseLinks.filter((el, index) => (index !== 0) && !((responseLinks.length - 1) === index));
             },
 
@@ -180,21 +182,28 @@
              */
             initCatalog(){
                 this.user_category = this.$route.path
-                let url = `${location.origin}/Api/catalog/init${this.user_category}/${this.defaultPaginate}/${this.defaultSort}`;
+                let url = `${location.origin}/Api/catalog/init${this.user_category}/${this.defaultPaginate}/${this.defaultSort}/null/null/null/`;
 
-                this.$root.getJson(url)
+                axios.get(url)
                     .then(response => {
+                        console.log(response)
 
-                        let arr = Object.entries(response.filterProperty)
+                        let arr = Object.entries(response.data.filterProperty)
                         arr.forEach((element)=>{
                             Vue.set(this.dataFilterProperty, element[0], {
                                 name: element[0],
                                 data: element[1]
                             })
                         })
-                        this.setPaginationValues(response.products);
-                        this.addInProducts(response.products);
-                        console.log(response)
+                        if(response.data.products.prev_page_url) response.data.products.prev_page_url = response.data.products.prev_page_url.replace('catalog/init', 'catalog')
+                        response.data.products.next_page_url = response.data.products.next_page_url.replace('catalog/init', 'catalog')
+                        response.data.products.last_page_url = response.data.products.last_page_url.replace('catalog/init', 'catalog')
+                        response.data.products.first_page_url = response.data.products.first_page_url.replace('catalog/init', 'catalog')
+                        response.data.products.links.forEach( el => {
+                            if(el.url) el.url = el.url.replace('catalog/init', 'catalog')
+                        })
+                        this.setPaginationValues(response.data.products);
+                        this.addInProducts(response.data.products);
                     })
                     .catch(error => {
                         console.log(error)

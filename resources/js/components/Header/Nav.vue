@@ -10,6 +10,10 @@
             return {
                 links:[
                     {
+                        title: 'acc',
+                        href: '/account'
+                    },
+                    {
                         title: 'HOME',
                         href: '/'
                     },

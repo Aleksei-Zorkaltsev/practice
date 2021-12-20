@@ -14,8 +14,6 @@ class CatalogController extends Controller
 {
     public function getCatalogProducts($user_category, $paginate, $sortType, $category_id, $brand_id, $designer_id)
     {
-
-
         $data = Product::where('user_category', $user_category)
             ->when(($category_id !== 'null'), function ($query) use ($category_id){
                 return $query->where('category_id', $category_id);

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\v1\ProductsController as ProductsController;
 use App\Http\Controllers\Api\v1\CatalogController as CatalogController;
 use App\Http\Controllers\Api\v1\CategoriesController as CategoriesController;
+use App\Http\Controllers\Auth\RegisterController as RegisterController;
+use App\Http\Controllers\Auth\LoginController as LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,9 +22,15 @@ use App\Http\Controllers\Api\v1\CategoriesController as CategoriesController;
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+Route::middleware('auth:sanctum')->get('/user', function (Request $request){
+    return $request->user();
+});
+Auth::routes();
 
-Route::get('catalog/init/{user_category}/{paginate}/{sort}', [CatalogController::class, 'init']);
+Route::get('catalog/init/{user_category}/{paginate}/{sort}/null/null/null', [CatalogController::class, 'init']);
 Route::get('catalog/{user_category}/{paginate}/{sort}/{category_id}/{brand_id}/{designer_id}', [CatalogController::class, 'getCatalogProducts']);
 
 Route::resource('products', ProductsController::class);
 Route::resource('categories', CategoriesController::class);
+
+

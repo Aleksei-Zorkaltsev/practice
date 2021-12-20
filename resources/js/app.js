@@ -11,15 +11,13 @@ import layout from "./VueLayout"
 const app = new Vue({
     el: '#app',
     router: v_router,
+    data: {
+        user: {},
+    },
     components:{
         'v-layout': layout,
     },
     methods: {
-        getJson(url){
-            return fetch(url)
-                .then(response => {
-                    return response.json()
-                })
-        },
-    }
+    },
+
 });

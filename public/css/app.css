@@ -11284,6 +11284,41 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.authForm {
+  font-size: 16px;
+  box-sizing: border-box;
+  margin: 20px auto;
+  border-top: 1px solid rgba(69, 69, 69, 0.58);
+  border-bottom: 1px solid rgba(69, 69, 69, 0.58);
+  border-radius: 3px;
+  padding: 20px;
+}
+.authForm h3, .authForm .h3 {
+  font-weight: 800;
+  font-size: 33px;
+  text-align: center;
+}
+.authForm input {
+  height: 40px;
+  width: 400px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.authForm h4, .authForm .h4 {
+  font-weight: 800;
+  font-size: 20px;
+}
+.authForm .button_login_or_forgot button {
+  font-weight: 600;
+  margin-right: 88px;
+  background: none;
+  height: 50px;
+  width: 180px;
+  border: 1px solid rgba(69, 69, 69, 0.58);
+  outline: none;
+}
+
 .header {
   min-height: 99px;
   border-bottom: 1px solid #e6e6e6;

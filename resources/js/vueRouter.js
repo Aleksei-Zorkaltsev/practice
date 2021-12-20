@@ -3,9 +3,11 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
-import Home from "./components/HomePage/Main"
-import Catalog from "./components/Catalog/Main"
-import Auth from "./components/Auth/Main"
+import Home from "./components/HomePage/MainHomepage"
+import Catalog from "./components/Catalog/MainCatalog"
+import Registry from "./components/Auth/Registry"
+import Login from "./components/Auth/Login"
+import Account from "./components/Account/MainAccount";
 
 const routes = [
     {
@@ -25,8 +27,17 @@ const routes = [
         component: Catalog,
     },
     {
+        name: 'Login',
         path: "/login",
-        component: Auth,
+        component: Login,
+    },
+    {
+        path: "/registry",
+        component: Registry,
+    },
+    {
+        path: '/account',
+        component: Account
     }
 ]
 

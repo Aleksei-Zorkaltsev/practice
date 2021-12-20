@@ -1,0 +1,45 @@
+<template>
+    <div class="authForm">
+        <h3>LOGIN</h3>
+        <h4>EMAIL ADDRESS <span>*</span></h4>
+        <input type="email" v-model="form.email">
+        <h4>PASSWORD <span>*</span></h4>
+        <input type="password" v-model="form.password">
+        <!--            <div>* Required Fileds</div>-->
+        <div class="button_login_or_forgot">
+            <button @click.prevent="login">LOGIN</button>
+            <a href="#">Forgot Password ?</a>
+        </div>
+    </div>
+</template>
+
+<script>
+    import vueRouter from "../../vueRouter";
+
+    export default {
+        name: "Login",
+        data(){
+            return{
+                form: {
+                    email: '',
+                    password: '',
+                }
+            }
+        },
+        methods:{
+            login(){
+                axios.post('/Api/login', this.form)
+                    .then(response => {
+                        vueRouter.push('account')
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>

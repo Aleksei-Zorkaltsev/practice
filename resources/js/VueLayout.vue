@@ -10,10 +10,9 @@
 </template>
 
 <script>
-    import header from "./components/Header/Main";
+    import header from "./components/Header/MainHeader";
     import top_nav from "./components/Header/Nav";
-    import footer from "./components/Footer/Main";
-    import auth from "./components/Auth/Main";
+    import footer from "./components/Footer/MainFooter";
 
     export default {
         name: "VueLayout",
@@ -21,7 +20,6 @@
             'v-header': header,
             'v-top-nav': top_nav,
             'v-footer': footer,
-            'v-auth': auth,
         }
     }
 </script>
