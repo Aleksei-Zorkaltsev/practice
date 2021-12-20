@@ -1,0 +1,298 @@
+.prewiew {
+    background-color: #e8e8e8;
+    height: 613px;
+}
+
+.backPrewiewtop {
+
+    position: relative;
+    height: inherit;
+    background-repeat: no-repeat;
+    background-position: top right 40px;
+    background-size: 550px;
+    //background-image: url(../../storage/app/public/img/topHeaderBack.png);
+    background-image: $mainPrewUrl;
+
+
+    @media(max-width:610px) {
+        background-position: top;
+    }
+}
+
+.prewiewText {
+    position: absolute;
+    color: $textColorMain;
+    padding-left: 12px;
+    height: 91px;
+    left: 0;
+    top: 224px;
+    font-weight: 900;
+    border-left: 10px solid $themePageColor;
+    font-size: 40px;
+    line-height: 63px;
+    letter-spacing: 1px;
+
+    @media(max-width:576px) {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-left: none;
+    }
+
+    @media(max-width:353px) {
+        font-size: 37px;
+    }
+
+    div {
+        line-height: 43px;
+        font-size: 60px;
+        letter-spacing: 1.5px;
+
+        @media(max-width:576px) {
+            padding-left: 0;
+            border-bottom: 10px solid $themePageColor;
+            text-align: center;
+            padding-bottom: 8px;
+            line-height: 60px;
+        }
+    }
+
+    span {
+        color: $themePageColor;
+    }
+}
+
+
+.categories {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    min-height: 820px;
+}
+
+.contanerCategories {
+    height: inherit;
+    position: relative;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 261px);
+
+    grid-template-areas:
+        "hotdeal offer30"
+        "hotdeal newArriwals"
+        "luxious newArriwals"
+    ;
+
+    @media(max-width:576px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 261px);
+        grid-template-areas:
+            "hotdeal"
+            "luxious"
+            "offer30"
+            "newArriwals"
+        ;
+    }
+}
+/* uniq */
+.hotdeal {
+    grid-area: hotdeal;
+    background: $offer1;
+    //background: url(../gb_assets/img/offer1.jpg) no-repeat top center;
+}
+
+.luxious {
+    grid-area: luxious;
+    background: $offer2;
+    //background: url(../gb_assets/img/offer2.jpg) no-repeat top center;
+}
+
+.offer30 {
+    grid-area: offer30;
+    background: $offer3;
+    //background: url(../gb_assets/img/offer3.jpg) no-repeat top center;
+}
+
+.newArriwals {
+    grid-area: newArriwals;
+    background: $offer4;
+    //background: url(../gb_assets/img/offer4.jpg) no-repeat top center;
+}
+/* --- */
+
+.whiteboxCattegories {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 15px;
+    background-color: white;
+    color: $textColorMain;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.45px;
+
+    div {
+        color: $themePageColor;
+        font-size: 30px;
+        letter-spacing: 0.75px;
+    }
+
+    &:active {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 100%);
+    }
+}
+
+.featuredItems {
+    text-align: center;
+
+    h2 {
+        margin: 0;
+        color: $textColorMain;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 54px;
+        letter-spacing: 0.75px;
+    }
+
+    p {
+        color: #9f9f9f;
+        font-size: 14px;
+        letter-spacing: 0.35px;
+    }
+}
+
+.rowItemsIndex {
+    margin-top: 30px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, 269px);
+    justify-content: center;
+
+}
+
+.browseAllbutton {
+    clear: both;
+    margin: 30px auto 100px;
+    display: flex;
+    align-items: center;
+    width: 212px;
+    height: 48px;
+    background-color: $themePageColor;
+
+    &:active {
+        background: linear-gradient(180deg, rgba(201, 100, 115, 1) 0%, rgba(241, 109, 127, 1) 100%);
+    }
+
+    span {
+        margin-left: 24px;
+        margin-right: 9px;
+        height: inherit;
+        line-height: 48px;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+    }
+}
+
+.offer30Block {
+    min-height: 529px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
+
+    @media(max-width:840px) {
+        background-position: top center;
+        background-size: cover;
+        flex-direction: column;
+    }
+}
+
+.offerLeftSideBlock {
+    width: 767px;
+    background: $offerPrewImgUrl;
+
+    @media(max-width:840px) {
+        width: auto;
+        background-size: cover;
+    }
+}
+
+.textOfferGirlImg {
+    margin-top: 144px;
+    margin-left: 20px;
+    color: #ffffff;
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 47px;
+    letter-spacing: 1.5px;
+
+    @media(max-width:840px) {
+        margin-bottom: 30px;
+    }
+
+    span {
+        color: $themePageColor;
+    }
+
+    div {
+        font-size: 32px;
+        letter-spacing: 0.9px;
+    }
+}
+
+.service {
+    width: 373px;
+    height: 529px;
+    background-color: $textColorMain;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    @media(max-width:840px) {
+        padding-top: 30px;
+        height: auto;
+        width: auto;
+    }
+}
+
+.servicePoint {
+    height: 105px;
+    display: flex;
+
+    img {
+        width: 113px;
+        height: inherit;
+        object-fit: none;
+        object-position: top center;
+    }
+
+    h2 {
+        margin: 0;
+        color: #fbfbfb;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+
+        @media(max-width:840px) {
+            padding-left: 10px;
+        }
+    }
+
+    p {
+        margin-bottom: 0;
+        width: 220px;
+        color: #fbfbfb;
+        font-weight: 300;
+        line-height: 19px;
+        letter-spacing: 0.35px;
+
+        @media(max-width:840px) {
+            padding-left: 10px;
+            width: auto;
+        }
+    }
+}

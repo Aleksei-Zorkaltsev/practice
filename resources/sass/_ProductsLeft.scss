@@ -1,0 +1,44 @@
+.productsMain {
+    margin-top: 60px;
+}
+
+.productsLeft {
+    border: none;
+    border-radius: 0;
+
+    &:not(:last-child) {
+        margin-bottom: 18px;
+    }
+}
+
+.productLeftUnit {
+    height: 41px;
+    position: relative;
+    color: $themePageColor;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+
+    &:before {
+        content: ' ';
+        display: block;
+        height: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        background-color: $themePageColor;
+    }
+
+}
+
+.productLeftNav {
+    a {
+        cursor: pointer;
+        display: block;
+        color: $colorTextGray !important;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 33px;
+    }
+}

@@ -1,0 +1,41 @@
+.topNav {
+    width: 680px;
+    margin: 0 auto;
+    min-height: 52px;
+    display: flex;
+    justify-content: space-between;
+
+    @media(max-width:700px) {
+        width: initial;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    a {
+        font-weight: 700;
+        line-height: 51px;
+        margin-bottom: 2px;
+
+        @media(max-width:700px) {
+            padding: 0 10px;
+        }
+
+        @media(max-width:536px) {
+            padding: 0 20px;
+        }
+
+        @media(max-width:350px) {
+            padding: 0 10px;
+        }
+    }
+
+    a:hover {
+        margin-bottom: 0;
+        color: dimgray;
+        border-bottom: 2px solid $themePageColor;
+    }
+
+    a:active {
+        color: #acacac;
+    }
+}

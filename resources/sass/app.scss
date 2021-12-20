@@ -1,0 +1,67 @@
+//@import "../bootstrap-4.5.0/scss/bootstrap.scss";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+//bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//variables
+@import 'variables';
+@import "header";
+@import "topNav";
+@import "nav_here";
+@import "indexContent";
+@import "productsLeft";
+@import "productsCatalog";
+@import "checkoutpage";
+@import "singlePage";
+@import "shoppingCart";
+@import "review";
+@import "footer";
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $mainFont;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+input,
+button,
+select {
+    font-family: $mainFont;
+}
+
+input:focus,
+button:focus,
+select:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: $textColorMain;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+.content {
+    min-height: calc(100vh - 152px); //header + top_nav = height: 151px
+}
+.container {
+    max-width: 1200px;
+    height: inherit;
+    padding: 0 30px;
+    margin: 0 auto;
+
+    @media(max-width: 767px) {
+        padding: 0;
+    }
+}

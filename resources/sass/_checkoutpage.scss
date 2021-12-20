@@ -1,0 +1,180 @@
+.checkout_main {
+    margin-top: 30px;
+    margin-bottom: 100px;
+
+    span {
+        color: #b3b2b2;
+        font-weight: 400;
+        line-height: 30px;
+    }
+
+    h3 {
+        color: $textColorMain;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-size: 13px;
+    }
+
+    h4 {
+        color: $textColorMain;
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 20px;
+        text-transform: uppercase;
+        margin: 15px 0 8px;
+    }
+
+    h4 span {
+        font-size: 17px;
+        color: red;
+    }
+
+    button {
+        width: 180px;
+        height: 50px;
+        border: 1px solid $borderColor;
+        background-color: white;
+        color: #4a4a4a;
+        font-family: $mainFont;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    input {
+        height: 45px;
+        border: 1px solid $borderColor;
+        background-color: white;
+    }
+
+    .radio {
+        width: 14px;
+        height: 14px;
+        margin: 8px 14px 8px 0;
+        color: black;
+        border: 2px solid #555555;
+        background-color: white;
+    }
+}
+
+.checkout_main .accordion > .card > .card-header {
+    margin-bottom: 0;
+}
+
+.checkoutUnit {
+    border: none;
+    border-radius: 0;
+}
+
+.checkoutTitle {
+    background: none;
+    height: 70px;
+    border-bottom: 1px solid $borderColor;
+
+    h2 {
+        line-height: 47px;
+        color: $textColorMain;
+        font-size: 16px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+}
+
+.checkoutFormsShipAdress {
+    display: flex;
+    justify-content: space-between;
+
+    @media(max-width:789px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.checkout_warrning {
+    margin-top: 22px;
+    color: red;
+}
+
+.checkout_shipAd_left {
+    margin-left: 22px;
+    display: flex;
+    flex-direction: column;
+
+    @media(max-width:789px) {
+        margin: 15px 0;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        color: $textColorMain;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    button {
+        margin-top: auto;
+
+        @media(max-width:789px) {
+            margin: 15px auto 0;
+        }
+    }
+
+    .radioButtonBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        margin: 16px 0;
+
+        @media(max-width:789px) {
+            align-items: center;
+        }
+    }
+}
+
+.checkout_shipAd_right {
+    margin-right: 160px;
+    height: inherit;
+
+    @media(max-width:789px) {
+        margin: 25px 0;
+    }
+
+    @media(max-width:1024px) {
+        margin-right: 0;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    a {
+        margin-left: 32px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+
+        @media(max-width:451px) {
+            margin: 0;
+        }
+    }
+
+    button {
+        margin-top: 32px;
+
+        @media(max-width:451px) {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.checkoutlogInForgot {
+    @media(max-width:451px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
