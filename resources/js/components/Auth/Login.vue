@@ -15,9 +15,11 @@
 
 <script>
     import vueRouter from "../../vueRouter";
+    import { getUser } from './../../services/getUser';
 
     export default {
         name: "Login",
+        props: ['user'],
         data(){
             return{
                 form: {
@@ -30,21 +32,24 @@
             login(){
                 axios.post('/Api/login', this.form)
                     .then(response => {
-                        this.$root.getUser().then(res => {vueRouter.push('account')})
+                        console.log(response);
+                        getUser().then(res => {
+                            GLOBAL_STORE.user = res.data;
+                            vueRouter.push('account')
+                        })
                     })
                     .catch(err => {
                         console.log(err)
                     })
             }
         },
-        beforeCreate(){
-            if(!this.$root.user){
-                this.$root.getUser().then(response => {
-                    if(this.$root.user) vueRouter.push('account')
-                })
-            }
-        }
-
+        // beforeCreate(){
+        //     if(!this.$root.user){
+        //         this.$root.getUser().then(response => {
+        //             if(this.$root.user) vueRouter.push('account')
+        //         })
+        //     }
+        // },
     }
 </script>
 

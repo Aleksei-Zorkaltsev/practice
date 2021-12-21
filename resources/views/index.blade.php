@@ -13,8 +13,9 @@
     <title>Document</title>
 </head>
 <body>
+    <div></div>
     <div id="app">
-        <vue-layout :user="user" :auth="auth"></vue-layout>
+        <vue-layout :auth-user='@json($auth_user)'></vue-layout>
     </div>
 
     <script src="/js/app.js"></script>
