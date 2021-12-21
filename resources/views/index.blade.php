@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="app">
-        <v-layout></v-layout>
+        <vue-layout :user="user" :auth="auth"></vue-layout>
     </div>
 
     <script src="/js/app.js"></script>

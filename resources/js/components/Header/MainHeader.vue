@@ -5,7 +5,7 @@
                 <header-search></header-search>
                 <div class="header_Cart_Account">
                     <a class="cart" href="#"><img :src="imgCart" alt="cart"></a>
-                    <div v-if="login" class="cart">
+                    <div v-if="auth" class="cart">
                         <!-- img/icon/cart.png  -->
                         <div class="myAccount">
                             <a href="#">MyAccount <i class="fa fa-caret-down" aria-hidden="true"></i></a>
@@ -26,8 +26,9 @@
 
     export default {
         name: "Header",
-        data(){return{
-            login: false,
+        props: ['auth'],
+        data(){
+            return{
             imgCart: '../storage/img/icon/cart.png',
         }},
         components:{
@@ -35,12 +36,7 @@
             'header-search': topSearch,
         },
         mounted(){
-            axios.get('/Api/user')
-                .then(response => {
-                    //this.login = response.data
-                })
-                .catch()
-        }
+        },
     }
 </script>
 

@@ -37,13 +37,13 @@
                 },
                 errors: [],
                 reg_complete: false,
-                timer: 3
+                timer: 2
             }
         },
         computed: {
             timerRedirect(){
                 if(this.timer === 0) {
-                    vueRouter.push('Login')
+                    vueRouter.push('account')
                 }
                 setTimeout(()=>{
                     this.timer--;
@@ -54,9 +54,14 @@
         methods: {
             sendForm(){
                 axios.post('/Api/register', this.form)
-                    .then(response =>{
-                        this.reg_complete = true;
-                        console.log('success')
+                    .then(response => {
+                        axios.post('/Api/login', {name: this.name, email: this.email})
+                            .then(res => {
+                                this.$root.getUser().then(res => {this.reg_complete = true})
+                            })
+                            .catch(err=> {
+                                console.log(err)
+                            })
                     })
                     .catch(err => {
                         this.errors = err.response.data.errors

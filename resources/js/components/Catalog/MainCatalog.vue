@@ -106,7 +106,6 @@
              * Request Products and set Pagination
              */
             getProducts(url){
-                console.log('getProducts')
                 axios.get(this.buildApiRequest_Url(url))
                         .then(response => {
                             this.setPaginationValues(response.data);
@@ -186,8 +185,6 @@
 
                 axios.get(url)
                     .then(response => {
-                        console.log(response)
-
                         let arr = Object.entries(response.data.filterProperty)
                         arr.forEach((element)=>{
                             Vue.set(this.dataFilterProperty, element[0], {

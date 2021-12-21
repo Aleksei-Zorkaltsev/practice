@@ -1,9 +1,9 @@
 <template>
     <div>
-        <v-header></v-header>
+        <v-header :auth="auth"></v-header>
         <v-top-nav></v-top-nav>
         <div class="content">
-            <router-view></router-view>
+            <router-view :user="user"></router-view>
         </div>
         <v-footer></v-footer>
     </div>
@@ -16,6 +16,7 @@
 
     export default {
         name: "VueLayout",
+        props: ['user', 'auth'],
         components: {
             'v-header': header,
             'v-top-nav': top_nav,

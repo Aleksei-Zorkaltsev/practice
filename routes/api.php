@@ -23,8 +23,10 @@ use App\Http\Controllers\Auth\LoginController as LoginController;
 //    return $request->user();
 //});
 Route::middleware('auth:sanctum')->get('/user', function (Request $request){
+    var_dump($request);
     return $request->user();
 });
+
 Auth::routes();
 
 Route::get('catalog/init/{user_category}/{paginate}/{sort}/null/null/null', [CatalogController::class, 'init']);
@@ -32,5 +34,3 @@ Route::get('catalog/{user_category}/{paginate}/{sort}/{category_id}/{brand_id}/{
 
 Route::resource('products', ProductsController::class);
 Route::resource('categories', CategoriesController::class);
-
-

@@ -30,13 +30,21 @@
             login(){
                 axios.post('/Api/login', this.form)
                     .then(response => {
-                        vueRouter.push('account')
+                        this.$root.getUser().then(res => {vueRouter.push('account')})
                     })
                     .catch(err => {
                         console.log(err)
                     })
             }
+        },
+        beforeCreate(){
+            if(!this.$root.user){
+                this.$root.getUser().then(response => {
+                    if(this.$root.user) vueRouter.push('account')
+                })
+            }
         }
+
     }
 </script>
 
