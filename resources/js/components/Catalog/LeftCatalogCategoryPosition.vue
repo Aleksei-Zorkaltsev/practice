@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import vueRouter from "../../vueRouter";
+    import vueRouter from "../../VueRouter";
 
     export default {
         name: "LeftCatalogCategoryPosition",

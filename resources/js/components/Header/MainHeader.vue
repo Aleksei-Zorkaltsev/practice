@@ -5,7 +5,7 @@
                 <header-search></header-search>
                 <div class="header_Cart_Account">
                     <a class="cart" href="#"><img :src="imgCart" alt="cart"></a>
-                    <div v-if="auth" class="cart">
+                    <div v-if="show" class="cart">
                         <!-- img/icon/cart.png  -->
                         <div class="myAccount">
                             <a href="#">MyAccount <i class="fa fa-caret-down" aria-hidden="true"></i></a>
@@ -26,10 +26,10 @@
 
     export default {
         name: "Header",
-        props: ['auth'],
         data(){
-            return{
-            imgCart: '../storage/img/icon/cart.png',
+            return {
+                show: false,
+                imgCart: '../storage/img/icon/cart.png',
         }},
         components:{
             'header-logo': logo,

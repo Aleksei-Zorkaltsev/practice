@@ -2,10 +2,9 @@
     <div class="authForm">
         <h3>LOGIN</h3>
         <h4>EMAIL ADDRESS <span>*</span></h4>
-        <input type="email" v-model="form.email">
+        <input type="email" :value="email" @input="updateEmail">
         <h4>PASSWORD <span>*</span></h4>
-        <input type="password" v-model="form.password">
-        <!--            <div>* Required Fileds</div>-->
+        <input type="password" :value="password" @input="updatePassword">
         <div class="button_login_or_forgot">
             <button @click.prevent="login">LOGIN</button>
             <a href="#">Forgot Password ?</a>
@@ -14,42 +13,32 @@
 </template>
 
 <script>
-    import vueRouter from "../../vueRouter";
-    import { getUser } from './../../services/getUser';
+
+    import { mapActions, mapState } from "vuex"
 
     export default {
         name: "Login",
-        props: ['user'],
-        data(){
-            return{
-                form: {
-                    email: '',
-                    password: '',
-                }
+
+        computed: {
+            ...mapState({
+                email: state => state.login_email,
+                password: state => state.login_password
+            })
+        },
+        methods: {
+            ...mapActions(['login']),
+
+            updateEmail(e){
+                this.$store.commit('loginEmailUpdate', e.target.value)
+            },
+
+            updatePassword(e){
+                this.$store.commit('loginPasswordUpdate', e.target.value)
             }
         },
-        methods:{
-            login(){
-                axios.post('/Api/login', this.form)
-                    .then(response => {
-                        console.log(response);
-                        getUser().then(res => {
-                            GLOBAL_STORE.user = res.data;
-                            vueRouter.push('account')
-                        })
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
-            }
-        },
-        // beforeCreate(){
-        //     if(!this.$root.user){
-        //         this.$root.getUser().then(response => {
-        //             if(this.$root.user) vueRouter.push('account')
-        //         })
-        //     }
-        // },
+
+        mounted(){
+        }
     }
 </script>
 

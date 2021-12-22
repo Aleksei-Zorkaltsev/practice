@@ -1,38 +1,26 @@
 <template>
-    <div class="account">
+    <div class="account" v-if="getStateUser">
         <h2>User account</h2>
         <div class="account_data">
-            <p>name: {{  }}</p>
-            <p>email: {{  }}</p>
+            <p>name: {{ getStateUser.name }}</p>
+            <p>email: {{ getStateUser.email }}</p>
         </div>
         <button @click.prevent="logout">logout</button>
     </div>
 </template>
 
 <script>
-    import vueRouter from "../../vueRouter";
+    import vueRouter from "../../VueRouter"
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "Main",
-        props: ['user'],
-        data(){
-            return {}
-        },
-        methods: {
-            logout(){
-                axios.post('Api/logout')
-                    .then(response => {
-                        this.$root.$data.user = {};
-                        this.$root.$data.auth = false;
-                        vueRouter.push('login')
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
-            },
-        },
-        created(){
-            if(!this.user) vueRouter.push('login')
+
+        computed: mapGetters(['getStateUser']),
+        methods: mapActions(['logout']),
+
+        mounted(){
+            if(!this.$store.state.userModule.user) vueRouter.push('login')
         }
     }
 </script>

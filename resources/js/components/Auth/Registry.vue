@@ -23,7 +23,8 @@
 </template>
 
 <script>
-    import vueRouter from "../../vueRouter";
+    import vueRouter from "../../VueRouter";
+    import {getUserApi} from "../../services/getUserApi";
 
     export default {
         name: "Main",
@@ -52,12 +53,12 @@
             }
         },
         methods: {
-            sendForm(){
+            async sendForm(){
                 axios.post('/Api/register', this.form)
                     .then(response => {
                         axios.post('/Api/login', {name: this.name, email: this.email})
                             .then(res => {
-                                this.$root.getUser().then(res => {this.reg_complete = true})
+                                getUserApi().then(res => {this.reg_complete = true})
                             })
                             .catch(err=> {
                                 console.log(err)

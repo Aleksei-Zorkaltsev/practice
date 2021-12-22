@@ -1,4 +1,4 @@
-export async function getUser() {
+export async function getUserApi() {
     try {
         const response = await axios.get('/Api/user');
         return response.data;
