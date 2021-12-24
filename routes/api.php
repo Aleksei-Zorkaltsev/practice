@@ -25,7 +25,6 @@ use App\Http\Controllers\Auth\LoginController as LoginController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 Auth::routes();
 
 Route::get('catalog/init/{user_category}/{paginate}/{sort}/null/null/null', [CatalogController::class, 'init']);

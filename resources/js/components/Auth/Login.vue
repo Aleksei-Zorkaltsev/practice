@@ -36,9 +36,6 @@
                 this.$store.commit('loginPasswordUpdate', e.target.value)
             }
         },
-
-        mounted(){
-        }
     }
 </script>
 

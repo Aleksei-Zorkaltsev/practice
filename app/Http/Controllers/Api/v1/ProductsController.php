@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Designer;
 use Illuminate\Http\Request;
 
 use App\Models\Product;
@@ -49,7 +52,32 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-       //
+//        $product = Product::find($id);
+//        $data = [
+//            'product' => $product,
+//            'category' => Category::find($product->brand_id),
+//            'brand' => Brand::find($product->category_id),
+//            'designer' => Designer::find($product->designer_id),
+//        ];
+
+        $data = \DB::table('products')
+            ->join('brands', 'products.brand_id', '=', 'brands.id')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->join('designers', 'products.designer_id', '=', 'designers.id')
+            ->select(
+                'products.product_name as product_name',
+                'products.price as price',
+//                'products.describe as describe',
+//                'products.material as material',
+                'products.img as img',
+                'products.user_category as user_category',
+                'brands.name as brand',
+                'categories.name as category',
+                'designers.name as designer')
+            ->where('products.id', '=', $id)
+            ->get();
+
+        return response()->json($data[0]);
     }
 
     /**

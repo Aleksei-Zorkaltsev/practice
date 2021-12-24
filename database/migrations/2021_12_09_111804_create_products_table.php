@@ -18,11 +18,12 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->string('img')->nullable();
             $table->float('price', 8, 2);
+            $table->text('describe')->nullable();
             $table->bigInteger('brand_id')->unsigned()->nullable();
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->bigInteger('designer_id')->unsigned()->nullable();
+            $table->string('material')->nullable();
             $table->enum('user_category', ['man', 'woman', 'kids']);
-            $table->string('img_path')->nullable();
             $table->timestamps();
 
             $table->foreign('brand_id')->references('id')->on('brands');

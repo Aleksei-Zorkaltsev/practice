@@ -7,7 +7,7 @@
             <img class="preview_img_item" v-if="img" :src="setImg(img)" alt="prew">
             <img class="preview_img_item" v-else :src="defaultImg" alt="default">
         </div>
-        <h3 class="nameItem"><a href="#">{{ product_name }}</a></h3>
+        <h3 class="nameItem"><router-link :to="`products/${product_id}`">{{ product_name }}</router-link></h3>
         <div class="price">{{ price }}</div>
     </div>
 </template>
@@ -25,10 +25,10 @@
         },
 
         methods:{
-
             setImg(img){
                 return `../storage/${img}`;
             },
+
         }
 
     }

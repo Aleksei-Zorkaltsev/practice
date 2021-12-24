@@ -15,7 +15,7 @@ export default {
             axios.post('Api/logout')
                 .then(response => {
                     context.commit('removeUser');
-                    vueRouter.push('login')
+                    vueRouter.push('/')
                 })
                 .catch(err => {
                     console.log(err)

@@ -23,6 +23,7 @@
             'v-footer': footer,
         },
 
+
         mounted() {
             if (this.authUser) this.$store.commit('setUser', this.authUser)
         }

@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 import Home from "./components/HomePage/MainHomepage"
 import Catalog from "./components/Catalog/MainCatalog"
+import Product from "./components/Product/MainProduct";
 import Registry from "./components/Auth/Registry"
 import Login from "./components/Auth/Login"
 import Account from "./components/Account/MainAccount";
@@ -27,6 +28,10 @@ const routes = [
         component: Catalog,
     },
     {
+        path: "/products/*",
+        component: Product,
+    },
+    {
         name: 'Login',
         path: "/login",
         component: Login,
@@ -38,7 +43,7 @@ const routes = [
     {
         path: '/account',
         component: Account
-    }
+    },
 ]
 
 export default new VueRouter({

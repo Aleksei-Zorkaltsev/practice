@@ -31,6 +31,7 @@ class CatalogController extends Controller
     }
 
     public function init($user_category, $paginate, $sortType){
+
         $data = [
             'products' => Product::where('user_category', $user_category)->orderBy($sortType)->paginate($paginate),
             'filterProperty' => [
@@ -39,6 +40,7 @@ class CatalogController extends Controller
                 'designers' => Designer::all(),
             ],
         ];
+
         return response()->json($data);
     }
 }

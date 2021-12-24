@@ -1,6 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
-@import url(https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap);
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -11444,6 +11441,7 @@ textarea.form-control-lg {
 }
 
 .header_LOG_REG {
+  margin-left: 20px;
   display: flex;
   align-items: end;
 }
@@ -11468,6 +11466,7 @@ textarea.form-control-lg {
 }
 .header_Cart_Account .cart {
   display: flex;
+  position: relative;
 }
 .header_Cart_Account .cart a {
   display: block;
@@ -11475,24 +11474,54 @@ textarea.form-control-lg {
 .header_Cart_Account .cart a img {
   margin-right: 10px;
 }
-.header_Cart_Account .myAccount {
+.header_Cart_Account .cart ul {
+  list-style-type: none;
+  position: absolute;
+  right: 2px;
+  top: 69px;
+}
+.header_Cart_Account .cart ul li {
+  text-align: center;
+  line-height: 29px;
+  height: 32px;
+  width: 126px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid rgba(180, 180, 180, 0.47);
+  transition: background-color 0.2s;
+}
+.header_Cart_Account .cart ul li:hover {
+  background-color: #f16d7f;
+  color: white;
+}
+.header_Cart_Account .cart ul li:active {
+  color: white;
+  background-color: #6c757d;
+}
+.header_Cart_Account .cart ul li:not(:first-child) {
+  border-top: none;
+}
+.header_Cart_Account .cart button {
+  margin-left: 20px;
   text-align: center;
   width: 130px;
   height: 38px;
   background-color: #f16d7f;
   line-height: 38px;
   border-radius: 3px;
-}
-.header_Cart_Account .myAccount:active {
-  background: linear-gradient(180deg, #c96473 0%, #f16d7f 100%);
-}
-.header_Cart_Account .myAccount i {
-  margin-left: 8px;
-}
-.header_Cart_Account .myAccount a {
+  outline: none;
+  border: none;
   font-size: 15px;
   letter-spacing: 0.38px;
   color: white;
+}
+.header_Cart_Account .cart button:active {
+  background: linear-gradient(180deg, #c96473 0%, #f16d7f 100%);
+}
+.header_Cart_Account .cart button i {
+  margin-left: 8px;
 }
 
 .topNav {
@@ -12254,7 +12283,7 @@ textarea.form-control-lg {
   border: 1px solid #e6e6e6;
   background-color: white;
   color: #4a4a4a;
-  font-family: "Lato", sans-serif;
+  font-family: sans-serif;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -12398,6 +12427,7 @@ textarea.form-control-lg {
 .single_prew {
   border: 1px solid #eaeaea;
   background-color: #f7f7f7;
+  min-height: 400px;
   max-height: 777px;
   display: flex;
   justify-content: space-around;
@@ -12411,6 +12441,7 @@ textarea.form-control-lg {
      object-fit: contain;
   -o-object-position: top center;
      object-position: top center;
+  min-height: inherit;
 }
 @media (max-width: 768px) {
   .single_prew img {
@@ -13108,7 +13139,7 @@ textarea.form-control-lg {
 }
 .emailEnterSub button {
   color: #ffffff;
-  font-family: "Lato", sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   letter-spacing: 0.35px;
   width: 104px;
@@ -13391,7 +13422,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
+  font-family: sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
@@ -13399,7 +13430,7 @@ body {
 input,
 button,
 select {
-  font-family: "Lato", sans-serif;
+  font-family: sans-serif;
 }
 
 input:focus,

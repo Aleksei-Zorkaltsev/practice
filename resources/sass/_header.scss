@@ -130,6 +130,7 @@
     }
 }
 .header_LOG_REG{
+    margin-left: 20px;
     display: flex;
     align-items: end;
 
@@ -153,34 +154,70 @@
 
     .cart {
         display: flex;
-        a{
+        position: relative;
+
+        a {
             display: block;
-            img{
+
+            img {
                 margin-right: 10px;
             }
         }
-    }
 
-    .myAccount {
-        text-align: center;
-        width: 130px;
-        height: 38px;
-        background-color: $themePageColor;
-        line-height: 38px;
-        border-radius: 3px;
+        ul {
+            list-style-type: none;
+            position: absolute;
+            right: 2px;
+            top: 69px;
 
-        &:active {
-            background: linear-gradient(180deg, rgba(201, 100, 115, 1) 0%, rgba(241, 109, 127, 1) 100%);
+            li {
+                text-align: center;
+                line-height: 29px;
+                height: 32px;
+                width: 126px;
+                font-size: 14px;
+                font-weight: 600;
+                background-color: white;
+                cursor: pointer;
+                border: 1px solid rgba(180, 180, 180, 0.47);
+                transition: background-color 0.2s;
+            }
+            li:hover {
+                background-color: $themePageColor;
+                color: white;
+            }
+            li:active {
+                color: white;
+                background-color: #6c757d;
+            }
+            li:not(:first-child) {
+                border-top: none;
+            }
+
         }
 
-        i {
-            margin-left: 8px;
-        }
+        button {
+            margin-left: 20px;
+            text-align: center;
+            width: 130px;
+            height: 38px;
+            background-color: $themePageColor;
+            line-height: 38px;
+            border-radius: 3px;
+            outline: none;
+            border: none;
 
-        a {
             font-size: 15px;
             letter-spacing: 0.38px;
             color: white;
+
+            &:active {
+                background: linear-gradient(180deg, rgba(201, 100, 115, 1) 0%, rgba(241, 109, 127, 1) 100%);
+            }
+
+            i {
+                margin-left: 8px;
+            }
         }
     }
 }

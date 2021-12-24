@@ -9,21 +9,18 @@ export default {
 
     actions:{
         async login(context){
-
-            console.log(context.state.login_email, context.state.login_password)
-
             axios.post('/Api/login', {
-                email: context.state.login_email,
-                password: context.state.login_password
-            }).then(response => {
-                console.log(context)
-                getUserApi().then(user => {
-                    context.commit('setUser', user);
-                    vueRouter.push('account')
+                    email: context.state.login_email,
+                    password: context.state.login_password
                 })
-            })
-                .catch(err => {
-                    console.log(err)
+                .then(response => {
+                    getUserApi().then(user => {
+                        context.commit('setUser', user);
+                        vueRouter.push('account')
+                    })
+                })
+                    .catch(err => {
+                        console.log(err)
                 })
         },
     },

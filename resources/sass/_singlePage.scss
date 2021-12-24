@@ -1,6 +1,7 @@
 .single_prew {
     border: 1px solid $borderColor2;
     background-color: #f7f7f7;
+    min-height: 400px;
     max-height: 777px;
     display: flex;
     justify-content: space-around;
@@ -12,6 +13,7 @@
     img {
         object-fit: contain;
         object-position: top center;
+        min-height: inherit;
 
         @media(max-width: 768px) {
             object-fit: cover;

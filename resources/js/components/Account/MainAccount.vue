@@ -20,7 +20,9 @@
         methods: mapActions(['logout']),
 
         mounted(){
-            if(!this.$store.state.userModule.user) vueRouter.push('login')
+            Vue.nextTick(() => {
+                if(!this.getStateUser) vueRouter.push('login')
+            })
         }
     }
 </script>
