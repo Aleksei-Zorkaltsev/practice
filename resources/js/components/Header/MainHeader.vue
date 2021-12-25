@@ -4,7 +4,7 @@
                 <header-logo></header-logo>
                 <header-search></header-search>
                 <div class="header_Cart_Account">
-                    <a class="cart" href="#"><img :src="imgCart" alt="cart"></a>
+                    <router-link class="cart" to="/cart"><img :src="imgCart" alt="cart"></router-link>
                     <div v-if="getStateUser" class="cart" ref="optionAccountList">
                         <button @click.prevent="toggleDropdown($event)">MyAccount<i class="fa fa-caret-down" aria-hidden="true"></i></button>
                         <ul class="dropdownOptionsAccount" v-show="showDropdown">

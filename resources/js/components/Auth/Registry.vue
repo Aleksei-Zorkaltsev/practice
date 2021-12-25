@@ -3,13 +3,13 @@
         <div v-if="!reg_complete">
             <h3>REGISTRATION</h3>
             <h4>LOGIN<span>*</span></h4>
-            <input type="text"  v-model="form.name">
+            <input type="text"  :value="name" @input="updateName">
             <h4>EMAIL ADDRESS <span>*</span></h4>
-            <input type="email" v-model="form.email">
+            <input type="email" :value="email" @inpit="updateEmail">
             <h4>PASSWORD <span>*</span></h4>
-            <input type="password" v-model="form.password">
+            <input type="password" :value="password" @inpit="updatePassword">
             <h4>CONFIRM PASSWORD <span>*</span></h4>
-            <input type="password" v-model="form.password_confirmation">
+            <input type="password" :value="password_confirm" @inpit="updatePasswordConfirm">
 <!--            <div>* Required Fileds</div>-->
             <div class="button_login_or_forgot">
                 <button @click.prevent="sendForm">REGISTRY</button>
@@ -24,24 +24,24 @@
 
 <script>
     import vueRouter from "../../VueRouter";
-    import {getUserApi} from "../../services/getUserApi";
+    import {mapActions, mapState} from 'vuex';
 
     export default {
         name: "Main",
         data(){
             return{
-                form: {
-                    name: '',
-                    email: '',
-                    password: '',
-                    password_confirmation: ''
-                },
-                errors: [],
                 reg_complete: false,
                 timer: 2
             }
         },
         computed: {
+            ...mapState({
+                name: state => state.registry_name,
+                email: state => state.registry_email,
+                password: state => state.registry_password,
+                password_confirm: state => state.registry_password_confirm,
+            }),
+
             timerRedirect(){
                 if(this.timer === 0) {
                     vueRouter.push('account')
@@ -53,22 +53,21 @@
             }
         },
         methods: {
-            async sendForm(){
-                axios.post('/Api/register', this.form)
-                    .then(response => {
-                        axios.post('/Api/login', {name: this.name, email: this.email})
-                            .then(res => {
-                                getUserApi().then(res => {this.reg_complete = true})
-                            })
-                            .catch(err=> {
-                                console.log(err)
-                            })
-                    })
-                    .catch(err => {
-                        this.errors = err.response.data.errors
-                    })
+            ...mapActions(['registration']),
+
+            updateName(e){
+                this.$store.commit('registrationNameUpdate', e.target.value)
+            },
+            updateEmail(e){
+                this.$store.commit('registrationEmailUpdate', e.target.value)
+            },
+            updatePassword(e){
+                this.$store.commit('registrationPasswordUpdate', e.target.value)
+            },
+            updatePasswordConfirm(e){
+                this.$store.commit('registrationPasswordConfirmUpdate', e.target.value)
             }
-        }
+        },
     }
 </script>
 

@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap);
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -12283,7 +12286,7 @@ textarea.form-control-lg {
   border: 1px solid #e6e6e6;
   background-color: white;
   color: #4a4a4a;
-  font-family: sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -13139,7 +13142,7 @@ textarea.form-control-lg {
 }
 .emailEnterSub button {
   color: #ffffff;
-  font-family: sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   letter-spacing: 0.35px;
   width: 104px;
@@ -13422,7 +13425,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
@@ -13430,7 +13433,7 @@ body {
 input,
 button,
 select {
-  font-family: sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 input:focus,
