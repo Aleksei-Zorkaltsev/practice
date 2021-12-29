@@ -24,7 +24,10 @@ export default {
                         name: context.state.registry_name,
                         email: context.state.registry_email
                     }).then(res => {
-                            getUserApi().then()
+                            getUserApi().then((user) => {
+                                context.commit('setUser', user);
+                                vueRouter.push('account')
+                            })
                         })
                         .catch(err=> {
                             console.log(err)
@@ -37,5 +40,21 @@ export default {
     },
     mutations: {
 
+        registrationNameUpdate(state, name){
+            state.registry_name = name;
+        },
+
+        registrationEmailUpdate(state, email){
+            state.registry_email = email
+        },
+
+        registrationPasswordUpdate(state, pass){
+            state.registry_password = pass
+        },
+
+        registrationPasswordConfirmUpdate(state, pass_confirm){
+            state.registry_password_confirm = pass_confirm
+
+        },
     },
 }

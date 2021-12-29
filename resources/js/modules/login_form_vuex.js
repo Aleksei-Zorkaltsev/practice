@@ -8,7 +8,7 @@ export default {
     },
 
     actions:{
-        async login(context){
+        login(context){
             axios.post('/Api/login', {
                     email: context.state.login_email,
                     password: context.state.login_password
@@ -19,8 +19,8 @@ export default {
                         vueRouter.push('account')
                     })
                 })
-                    .catch(err => {
-                        console.log(err)
+                .catch(err => {
+                    console.log(err)
                 })
         },
     },

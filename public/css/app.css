@@ -11573,7 +11573,6 @@ textarea.form-control-lg {
 .nav_here {
   height: 148px;
   background-color: #f8f3f4;
-  margin-bottom: 20px;
 }
 
 .nav_titleAndCrump {
@@ -11942,6 +11941,8 @@ textarea.form-control-lg {
 }
 
 .productsMain {
+  padding-top: 20px !important;
+  margin-bottom: 20px !important;
   display: grid;
   grid-gap: 30px;
   grid-template-columns: 243px 1fr;
@@ -11950,6 +11951,10 @@ textarea.form-control-lg {
   .productsMain {
     grid-template-columns: 1fr;
   }
+}
+
+.catalog_right {
+  position: relative;
 }
 
 .catalog {
@@ -12110,6 +12115,8 @@ textarea.form-control-lg {
   grid-template-columns: repeat(3, 262px);
   justify-content: space-between;
   min-height: 460px;
+  height: inherit !important;
+  padding-bottom: 50px !important;
 }
 
 .item {
@@ -12198,6 +12205,9 @@ textarea.form-control-lg {
 }
 
 .catalog_pagination {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   color: #c4c4c4;
@@ -12210,7 +12220,6 @@ textarea.form-control-lg {
   }
 }
 .catalog_pagination div {
-  width: 261px;
   height: 44px;
   line-height: 44px;
   border-radius: 3px;
@@ -12609,6 +12618,28 @@ textarea.form-control-lg {
   }
 }
 
+.product-dropdown-chooser {
+  position: absolute;
+  top: 75px;
+}
+.product-dropdown-chooser div {
+  display: flex;
+  width: 142px;
+  height: 30px;
+  line-height: 30px;
+  color: #bcbcbc;
+  font-weight: 400;
+  padding-left: 9px;
+  background-color: white;
+  border: 1px solid #e6e6e6;
+  border-top: none;
+}
+
+.product-chooseColor {
+  padding-left: 9px;
+  display: flex;
+}
+
 .single_ChoiseUser {
   margin: 15px 0 30px;
   width: 144px;
@@ -12630,41 +12661,42 @@ textarea.form-control-lg {
   font-weight: 700;
   text-align: left;
 }
-.single_ChoiseUser input {
+.single_ChoiseUser .product-selectColorPrev {
+  display: block;
+  height: 14px;
+  width: 14px;
+  border: 1px solid darkgray;
+  margin-top: 9px;
+  margin-right: 9px;
+}
+.single_ChoiseUser .single_userColor {
   width: 142px;
   height: 35px;
-  padding-left: 15px;
   margin-top: 16px;
   color: #bcbcbc;
   font-weight: 400;
+  line-height: 31px;
   border: 1px solid #e6e6e6;
+}
+@media (max-width: 460px) {
+  .single_ChoiseUser .single_userColor {
+    width: 95%;
+  }
+}
+.single_ChoiseUser input {
+  width: 142px;
+  height: 35px;
+  margin-top: 16px;
+  color: #bcbcbc;
+  font-weight: 400;
+  line-height: 31px;
+  border: 1px solid #e6e6e6;
+  padding-left: 9px;
 }
 @media (max-width: 460px) {
   .single_ChoiseUser input {
     width: 95%;
   }
-}
-.single_ChoiseUser select {
-  width: 142px;
-  height: 35px;
-  margin-top: 16px;
-  border: 1px solid #e6e6e6;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  color: #bcbcbc;
-  font-size: 13px;
-  font-weight: 400;
-  background-position: right 8px center;
-}
-@media (max-width: 460px) {
-  .single_ChoiseUser select {
-    width: 95%;
-  }
-}
-.single_ChoiseUser .single_userColor {
-  position: relative;
-  padding-left: 38px;
 }
 .single_ChoiseUser .single_userSize {
   padding-left: 15px;
@@ -13261,10 +13293,6 @@ textarea.form-control-lg {
 
 .activePagination {
   background-color: #f16d7f;
-}
-
-footer {
-  border-top: 1px solid black;
 }
 
 .logo_compinfo {

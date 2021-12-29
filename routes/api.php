@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\v1\CatalogController as CatalogController;
 use App\Http\Controllers\Api\v1\CategoriesController as CategoriesController;
 use App\Http\Controllers\Auth\RegisterController as RegisterController;
 use App\Http\Controllers\Auth\LoginController as LoginController;
+use App\Http\Controllers\Api\v1\CartProductController as CartProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,10 +26,12 @@ use App\Http\Controllers\Auth\LoginController as LoginController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Auth::routes();
 
 Route::get('catalog/init/{user_category}/{paginate}/{sort}/null/null/null', [CatalogController::class, 'init']);
 Route::get('catalog/{user_category}/{paginate}/{sort}/{category_id}/{brand_id}/{designer_id}', [CatalogController::class, 'getCatalogProducts']);
 
+Route::resource('cart_product', CartProductController::class);
 Route::resource('products', ProductsController::class);
 Route::resource('categories', CategoriesController::class);

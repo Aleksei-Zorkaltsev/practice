@@ -8,6 +8,7 @@ use App\Models\Designer;
 use Illuminate\Http\Request;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Validator;
 
 
 class ProductsController extends Controller
@@ -30,7 +31,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -41,7 +42,41 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),[
+                'product_name' => ['required'],
+                "category_id" => ['required'],
+                "brand_id" => ['required'],
+                "designer_id" => ['required'],
+                "price" => ['required'],
+                "material" => [],
+            ]
+        );
+
+        if($validator->fails()){
+            $answer = [
+                "status" => false,
+                "message" => $validator->messages(),
+            ];
+            return response()->json($answer);
+        }
+
+        $product = Product::create([
+                "category_id" => $request->category_id,
+                "brand_id" => $request->brand_id,
+                "designer_id" => $request->designer_id,
+                "describes" => $request->describes,
+                "user_category" => $request->user_category,
+                "price" => $request->price,
+                "product_name" => $request->product_name,
+                "material" => $request->material,
+                "img" => $request->img
+        ]);
+        $answer = [
+            "status" => "true",
+            "product" => $product
+        ];
+        return response()->json($answer);
     }
 
     /**
@@ -52,14 +87,6 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-//        $product = Product::find($id);
-//        $data = [
-//            'product' => $product,
-//            'category' => Category::find($product->brand_id),
-//            'brand' => Brand::find($product->category_id),
-//            'designer' => Designer::find($product->designer_id),
-//        ];
-
         $data = \DB::table('products')
             ->join('brands', 'products.brand_id', '=', 'brands.id')
             ->join('categories', 'products.category_id', '=', 'categories.id')
@@ -67,8 +94,8 @@ class ProductsController extends Controller
             ->select(
                 'products.product_name as product_name',
                 'products.price as price',
-//                'products.describe as describe',
-//                'products.material as material',
+                'products.describes as describe',
+                'products.material as material',
                 'products.img as img',
                 'products.user_category as user_category',
                 'brands.name as brand',

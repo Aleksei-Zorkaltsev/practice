@@ -10,8 +10,15 @@ import Cart from "./components/Cart/MainCart";
 import Registry from "./components/Auth/Registry"
 import Login from "./components/Auth/Login"
 import Account from "./components/Account/MainAccount";
+import Admin from "./components/Admin/MainAdmin";
+
+import route_vuex from "./modules/route_vuex";
 
 const routes = [
+    {
+        path: "/admin",
+        component: Admin
+    },
     {
         path: "/",
         component: Home
@@ -50,7 +57,8 @@ const routes = [
     }
 ]
 
-export default new VueRouter({
+const router = new VueRouter({
     mode: "history",
     routes: routes,
 })
+export default router;

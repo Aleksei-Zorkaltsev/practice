@@ -2,7 +2,7 @@
     <div class="item" :data-id="product_id">
         <div class="prewiewITemImage">
             <div class="hoverItem">
-                <a href="#" class="AddCart"><img class="AddCartimg" :src="addCart_icon" alt="cart"> Add to Cart</a>
+                <router-link :to="`products/${product_id}`" class="AddCart"> Details </router-link>
             </div>
             <img class="preview_img_item" v-if="img" :src="setImg(img)" alt="prew">
             <img class="preview_img_item" v-else :src="defaultImg" alt="default">

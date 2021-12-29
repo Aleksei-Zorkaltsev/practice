@@ -10,12 +10,11 @@ export default {
         }
     },
     actions: {
-
         async logout(context){
             axios.post('Api/logout')
                 .then(response => {
                     context.commit('removeUser');
-                    vueRouter.push('/')
+                    if(vueRouter.app.$route.path !== '/') vueRouter.push('/')
                 })
                 .catch(err => {
                     console.log(err)
@@ -25,10 +24,7 @@ export default {
     mutations: {
 
         setUser(state, user){
-            console.log('setUser', user)
             state.user = user;
-
-            console.log(state.user)
         },
 
         removeUser(state){

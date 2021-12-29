@@ -10,6 +10,10 @@
             return {
                 links:[
                     {
+                        title: 'admin',
+                        href: '/admin'
+                    },
+                    {
                         title: 'HOME',
                         href: '/'
                     },
@@ -24,18 +28,6 @@
                     {
                         title: 'KIDS',
                         href: '/kids'
-                    },
-                    {
-                        title: 'ACCESSORIES',
-                        href: '/accessories'
-                    },
-                    {
-                        title: 'FEATURED',
-                        href: '/featured'
-                    },
-                    {
-                        title: 'HOT DEALS',
-                        href: '/hot_deals'
                     },
                 ]
             }

@@ -1,29 +1,25 @@
 <template>
     <div class="account" v-if="getStateUser">
-        <h2>User account</h2>
-        <div class="account_data">
-            <p>name: {{ getStateUser.name }}</p>
-            <p>email: {{ getStateUser.email }}</p>
+        <h2>User account.</h2>
+        <div class="profile">
+            <hr>
+            <h3>Profile:</h3>
+                Name: {{getStateUser.name}} <br>
+                Email: {{getStateUser.email}}
+
+            <hr>
         </div>
-        <button @click.prevent="logout">logout</button>
+        <button @click="logout">LOGOUT</button>
     </div>
 </template>
 
 <script>
-    import vueRouter from "../../VueRouter"
     import { mapGetters, mapActions } from 'vuex'
 
     export default {
-        name: "Main",
-
+        name: "MainAccount",
         computed: mapGetters(['getStateUser']),
         methods: mapActions(['logout']),
-
-        mounted(){
-            Vue.nextTick(() => {
-                if(!this.getStateUser) vueRouter.push('login')
-            })
-        }
     }
 </script>
 

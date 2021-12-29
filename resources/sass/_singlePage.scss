@@ -142,6 +142,7 @@
 }
 
 .spectficItem_characteristic {
+
     color: #b9b9b9;
     width: 50%;
     font-size: 14px;
@@ -182,6 +183,28 @@
     }
 }
 
+.product-dropdown-chooser {
+    position: absolute;
+    top: 75px;
+    div {
+        display: flex;
+        width: 142px;
+        height: 30px;
+        line-height: 30px;
+        color: #bcbcbc;
+        font-weight: 400;
+        padding-left: 9px;
+        background-color: white;
+        border: 1px solid $borderColor;
+        border-top: none;
+    }
+}
+
+.product-chooseColor {
+    padding-left: 9px;
+    display: flex;
+}
+
 .single_ChoiseUser {
     margin: 15px 0 30px;
     width: 144px;
@@ -202,43 +225,41 @@
         font-weight: 700;
         text-align: left;
     }
-
-    input {
-        width: 142px;
-        height: 35px;
-        padding-left: 15px;
-        margin-top: 16px;
-        color: #bcbcbc;
-        font-weight: 400;
-        border: 1px solid $borderColor;
-
-        @media(max-width: 460px) {
-            width: 95%;
-        }
-    }
-
-    select {
-        width: 142px;
-        height: 35px;
-        margin-top: 16px;
-        border: 1px solid $borderColor;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        color: #bcbcbc;
-        font-size: 13px;
-        font-weight: 400;
-        //background: url(../img/arrowForSelect.png) no-repeat;
-        background-position: right 8px center;
-
-        @media(max-width: 460px) {
-            width: 95%;
-        }
+    .product-selectColorPrev {
+        display: block;
+        height: 14px;
+        width: 14px;
+        border: 1px solid darkgray;
+        margin-top: 9px;
+        margin-right: 9px
     }
 
     .single_userColor {
-        position: relative;
-        padding-left: 38px;
+        width: 142px;
+        height: 35px;
+        margin-top: 16px;
+        color: #bcbcbc;
+        font-weight: 400;
+        line-height: 31px;
+        border: 1px solid $borderColor;
+
+        @media(max-width: 460px) {
+            width: 95%;
+        }
+    }
+    input {
+        width: 142px;
+        height: 35px;
+        margin-top: 16px;
+        color: #bcbcbc;
+        font-weight: 400;
+        line-height: 31px;
+        border: 1px solid $borderColor;
+        padding-left: 9px;
+
+        @media(max-width: 460px) {
+            width: 95%;
+        }
     }
 
     .single_userSize {
