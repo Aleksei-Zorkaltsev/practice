@@ -1,5 +1,6 @@
 <template>
-    <div class="authForm">
+    <div class="authForm container">
+        <br>
         <h3>LOGIN</h3>
         <h4>EMAIL ADDRESS <span>*</span></h4>
         <input type="email" :value="email" @input="updateEmail">
@@ -9,6 +10,7 @@
             <button @click.prevent="login">LOGIN</button>
             <a href="#">Forgot Password ?</a>
         </div>
+        <br>
     </div>
 </template>
 

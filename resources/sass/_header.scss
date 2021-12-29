@@ -143,6 +143,7 @@
     }
 }
 .header_Cart_Account {
+
     display: flex;
     align-items: center;
     margin-left: auto;
@@ -152,6 +153,14 @@
         margin-bottom: 15px;
     }
 
+    .button-toAdmin{
+        margin-right: 20px;
+
+        img {
+            height: 30px;
+            width: 30px;
+        }
+    }
     .cart {
         display: flex;
         position: relative;
@@ -162,6 +171,23 @@
             img {
                 margin-right: 10px;
             }
+        }
+
+        span {
+            position: absolute;
+            display: block;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 12px;
+            padding: 2px 4px;
+            color: white;
+            background-color: $themePageColor;
+            text-align: center;
+            font-size: 14px;
+            line-height: 14px;
+            border: 2px solid rgb(60 60 60 / 87%);
+            top: -5px;
+            right: -10px;
         }
 
         ul {

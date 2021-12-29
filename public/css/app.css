@@ -11319,6 +11319,57 @@ textarea.form-control-lg {
   outline: none;
 }
 
+.admin {
+  padding-top: 20px !important;
+  display: flex;
+  justify-content: space-around;
+}
+.admin .admin-add-block {
+  border: 1px solid #212121;
+  border-radius: 5px;
+  padding: 10px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.admin .admin-add-block h3, .admin .admin-add-block .h3 {
+  text-align: center;
+}
+.admin .admin-add-block .admin-form {
+  display: flex;
+  width: content-box;
+}
+.admin .admin-add-block .admin-form div {
+  width: 200px;
+  padding: 10px;
+}
+.admin .admin-add-block .admin-form input {
+  width: 100%;
+  outline: none;
+  border: 1px solid #212121;
+}
+.admin .admin-add-block .admin-form select {
+  width: 100%;
+  outline: none;
+  border: 1px solid #212121;
+}
+.admin .admin-add-block .admin-form textarea {
+  width: 100%;
+  outline: none;
+  border: 1px solid #212121;
+  height: 200px;
+  resize: none;
+}
+.admin .admin-add-block button {
+  display: block;
+  margin: 0 auto;
+  background: none;
+  outline: none;
+  border: 1px solid #212121;
+  height: 40px;
+  width: 160px;
+}
+
 .header {
   min-height: 99px;
   border-bottom: 1px solid #e6e6e6;
@@ -11467,6 +11518,13 @@ textarea.form-control-lg {
     margin-bottom: 15px;
   }
 }
+.header_Cart_Account .button-toAdmin {
+  margin-right: 20px;
+}
+.header_Cart_Account .button-toAdmin img {
+  height: 30px;
+  width: 30px;
+}
 .header_Cart_Account .cart {
   display: flex;
   position: relative;
@@ -11476,6 +11534,22 @@ textarea.form-control-lg {
 }
 .header_Cart_Account .cart a img {
   margin-right: 10px;
+}
+.header_Cart_Account .cart span {
+  position: absolute;
+  display: block;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 12px;
+  padding: 2px 4px;
+  color: white;
+  background-color: #f16d7f;
+  text-align: center;
+  font-size: 14px;
+  line-height: 14px;
+  border: 2px solid rgba(60, 60, 60, 0.87);
+  top: -5px;
+  right: -10px;
 }
 .header_Cart_Account .cart ul {
   list-style-type: none;

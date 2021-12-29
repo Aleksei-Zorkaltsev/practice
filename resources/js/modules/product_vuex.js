@@ -11,7 +11,6 @@ export default {
         getApiProduct(context, id) {
             let url = `${location.origin}/Api/products/${id}`;
             axios.get(url).then(response => {
-                console.log(response)
                     context.commit('setProduct', response.data);
                 })
                 .catch(err => {

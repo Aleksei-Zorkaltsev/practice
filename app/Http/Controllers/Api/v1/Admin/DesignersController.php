@@ -1,18 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1;
+namespace App\Http\Controllers\Api\v1\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Designer;
 use Illuminate\Http\Request;
 
-class CartProductController extends Controller
+class DesignersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){}
+    public function index()
+    {
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -32,7 +36,14 @@ class CartProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $designer = Designer::create([
+            'name' => $request->name,
+        ]);
+        $answer = [
+            'status' => 'designer added',
+            'designer' => $designer
+        ];
+        return response()->json($answer);
     }
 
     /**

@@ -7,9 +7,9 @@
             @click="resetStateSettings"
         ></v-breadcrumbs>
         <div class="productsMain container">
-            <left-catalog-catagory
+            <left-catalog-category
                 :dataFilterProperty="getFilterProperty">
-            </left-catalog-catagory>
+            </left-catalog-category>
             <div class="catalog_right">
                 <catalog-filter></catalog-filter>
                 <catalog-navbar></catalog-navbar>
@@ -37,7 +37,7 @@
 
         name: "Main",
         components:{
-            'left-catalog-catagory': LeftCatalogCategory,
+            'left-catalog-category': LeftCatalogCategory,
             'pagination': pagination,
             'catalog-navbar': catalogNavbar,
             'catalog': Catalog,
@@ -55,6 +55,8 @@
             $route(to, from) {
                 if(to.path !== from.path || to.path === from.path && Object.keys(to.query).length === 0){
                     this.$store.dispatch('resetStateSettings');
+                    this.$store.commit('setUserCategory', to.path.replace("/", ""))
+
                 } else {
                     this.$store.commit('changeCatalogCategory', to.query.categories);
                 }
@@ -63,7 +65,6 @@
         },
 
         computed: mapGetters(['getFilterProperty', 'getUserCategory', 'getStateProducts', 'getStateCategory', 'getStatePagination']),
-
         methods: mapActions(['initCatalog', 'resetStateSettings', 'getProducts',])
     }
 </script>

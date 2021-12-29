@@ -4,7 +4,7 @@
         <div v-if="getProduct">
             <div class="single_prew">
                 <img v-if="getProduct.img" :src="`../storage/${getProduct.img}`" alt="">
-                <img v-else :src="`../storage/img/Layer_42.png`" alt="img">
+                <img v-else :src="defaultImg" alt="img">
             </div>
             <div class="single_infoItem">
                 <div class="single_ContainerInfo">
@@ -53,6 +53,11 @@
 
     export default {
         name: "MainProduct",
+        data(){
+            return {
+                defaultImg: '../storage/img/def_Product.jpg'
+            }
+        },
         components: {
             'v-breadcrumbs': ProductBreadcrumbs,
             'v-color-picker': ColorPicker,

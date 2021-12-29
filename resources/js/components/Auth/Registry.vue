@@ -1,5 +1,6 @@
 <template>
-    <div class="authForm">
+    <div class="authForm container">
+        <br>
         <div>
             <h3>REGISTRATION</h3>
             <h4>LOGIN<span>*</span></h4>
@@ -27,6 +28,7 @@
                 <button @click.prevent="registration">REGISTRY</button>
             </div>
         </div>
+        <br>
     </div>
 </template>
 

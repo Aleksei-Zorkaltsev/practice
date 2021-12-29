@@ -3,12 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\api\v1\ProductsController as ProductsController;
 use App\Http\Controllers\Api\v1\CatalogController as CatalogController;
-use App\Http\Controllers\Api\v1\CategoriesController as CategoriesController;
-use App\Http\Controllers\Auth\RegisterController as RegisterController;
-use App\Http\Controllers\Auth\LoginController as LoginController;
-use App\Http\Controllers\Api\v1\CartProductController as CartProductController;
+use App\Http\Controllers\Api\v1\ProductsController as ProductsController;
+
+use App\Http\Controllers\api\v1\Admin\ProductsController as AdminProductsController;
+use App\Http\Controllers\Api\v1\Admin\CategoriesController as AdminCategoriesController;
+use App\Http\Controllers\Api\v1\Admin\BrandsController as AdminBrandsController;
+use App\Http\Controllers\Api\v1\Admin\DesignersController as AdminDesignersController;
+use App\Http\Controllers\Api\v1\Admin\AdminController as AdminController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,10 +30,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Auth::routes();
+Route::get('admin_status', [AdminController::class, 'checkAdmin']);
+
+Route::group(['prefix' => 'admin','middleware' => 'admin'], function(){
+    Route::get('init_form_product', [AdminController::class, 'initFormProduct']);
+    Route::resource('products', AdminProductsController::class);
+    Route::resource('categories', AdminCategoriesController::class);
+    Route::resource('brands', AdminBrandsController::class);
+    Route::resource('designers', AdminDesignersController::class);
+});
+
+Route::get('products/{id}', [ProductsController::class, 'show']);
 
 Route::get('catalog/init/{user_category}/{paginate}/{sort}/null/null/null', [CatalogController::class, 'init']);
 Route::get('catalog/{user_category}/{paginate}/{sort}/{category_id}/{brand_id}/{designer_id}', [CatalogController::class, 'getCatalogProducts']);
 
-Route::resource('cart_product', CartProductController::class);
-Route::resource('products', ProductsController::class);
-Route::resource('categories', CategoriesController::class);

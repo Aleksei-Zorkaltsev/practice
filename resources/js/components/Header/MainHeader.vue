@@ -4,7 +4,11 @@
                 <header-logo></header-logo>
                 <header-search></header-search>
                 <div class="header_Cart_Account">
-                    <router-link class="cart" to="/cart"><img :src="imgCart" alt="cart"></router-link>
+                    <router-link class="button-toAdmin" v-if="isAdmin" to="/admin"><img :src="`../storage/img/icon/admin_ico.png`"></router-link>
+                    <router-link class="cart" to="/cart">
+                        <img :src="imgCart" alt="cart">
+                        <span>{{ count_in_cart }}</span>
+                    </router-link>
                     <div v-if="getStateUser" class="cart" ref="optionAccountList">
                         <button @click.prevent="toggleDropdown($event)">MyAccount<i class="fa fa-caret-down" aria-hidden="true"></i></button>
                         <ul class="dropdownOptionsAccount" v-show="showDropdown">
@@ -30,6 +34,8 @@
         name: "Header",
         data(){
             return {
+                isAdmin: true,
+                count_in_cart: 0,
                 showDropdown: false,
                 imgCart: '../storage/img/icon/cart.png',
         }},

@@ -1,5 +1,5 @@
 <template>
-    <div class="account" v-if="getStateUser">
+    <div class="account container" v-if="getStateUser">
         <h2>User account.</h2>
         <div class="profile">
             <hr>
@@ -14,12 +14,19 @@
 </template>
 
 <script>
+    import VueRouter from "./../../VueRouter"
     import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "MainAccount",
         computed: mapGetters(['getStateUser']),
         methods: mapActions(['logout']),
+
+        mounted(){
+            Vue.nextTick(() => {
+                if(!this.$store.state.userModule.user) VueRouter.push('/login')
+            })
+        }
     }
 </script>
 
