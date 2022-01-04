@@ -35,7 +35,6 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
     export default {
         name: "Pagination",
 
@@ -51,11 +50,9 @@
         props: ['pagination'],
 
         methods: {
-            ...mapActions(['getProducts']),
-
             getPaginateProducts(url){
                 if(!url) return;
-                this.getProducts(url);
+                this.$store.dispatch('getProducts', url);
             },
         },
     }

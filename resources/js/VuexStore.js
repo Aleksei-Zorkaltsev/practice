@@ -6,6 +6,9 @@ import productModule from "./modules/product_vuex";
 import registrationModule from "./modules/registration_form_vuex";
 import catalogModule from "./modules/catalog_vuex";
 import routeModule from "./modules/route_vuex"
+import defaultImgs from "./modules/default_imgs_vuex";
+import cartModule from "./modules/cart_vuex";
+
 
 Vue.use(Vuex)
 
@@ -17,6 +20,8 @@ const store = new Vuex.Store({
         registrationModule,
         catalogModule,
         routeModule,
+        defaultImgs,
+        cartModule,
     },
 })
 export default store;

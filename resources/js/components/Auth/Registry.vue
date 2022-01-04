@@ -49,16 +49,16 @@
             ...mapActions(['registration']),
 
             updateName(e){
-                this.$store.commit('registrationNameUpdate', e.target.value)
+                this.$store.commit('REGISTRATION_FORM_NAME_UPDATE', e.target.value)
             },
             updateEmail(e){
-                this.$store.commit('registrationEmailUpdate', e.target.value)
+                this.$store.commit('REGISTRATION_FORM_EMAIL_UPDATE', e.target.value)
             },
             updatePassword(e){
-                this.$store.commit('registrationPasswordUpdate', e.target.value)
+                this.$store.commit('REGISTRATION_FORM_PASSWORD_UPDATE', e.target.value)
             },
             updatePasswordConfirm(e){
-                this.$store.commit('registrationPasswordConfirmUpdate', e.target.value)
+                this.$store.commit('REGISTRATION_FORM_PASSWORD_CONFIRM_UPDATE', e.target.value)
             }
         },
     }

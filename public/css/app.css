@@ -11437,6 +11437,7 @@ textarea.form-control-lg {
   }
 }
 .header_browseSearch .browse {
+  margin: 0;
   display: block;
   width: 86px;
   height: inherit;
@@ -11447,16 +11448,6 @@ textarea.form-control-lg {
   font-weight: 300;
   line-height: 35px;
   letter-spacing: 0.35px;
-}
-.header_browseSearch .browse:hover {
-  background: linear-gradient(180deg, white 0%, #ebebeb 100%);
-}
-.header_browseSearch .browse i {
-  color: gray;
-  margin-left: 8px;
-}
-.header_browseSearch .browse:active {
-  color: #f16d7f;
 }
 .header_browseSearch .searchtop {
   width: 264px;

@@ -15,8 +15,8 @@ export default {
                 })
                 .then(response => {
                     getUserApi().then(user => {
-                        context.commit('setUser', user);
-                        vueRouter.push('account')
+                        context.dispatch('setStoreUser', user);
+                        vueRouter.push('/')
                     })
                 })
                 .catch(err => {
@@ -27,11 +27,11 @@ export default {
 
     mutations: {
 
-        loginEmailUpdate(state, email){
+        LOGIN_FORM_EMAIL_UPDATE(state, email){
             state.login_email = email;
         },
 
-        loginPasswordUpdate(state, password){
+        LOGIN_FORM_PASSWORD_UPDATE(state, password){
             state.login_password = password
         },
     }

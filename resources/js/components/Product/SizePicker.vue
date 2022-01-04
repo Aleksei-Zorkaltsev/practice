@@ -2,30 +2,30 @@
     <div class="single_ChoiseUser">
         <h3>CHOOSE SIZE</h3>
         <div class="single_userColor" @click="toggleDropdown($event)">
-            <div class="product-chooseColor">{{ currentChoose }}</div>
+            <div v-if="gerCurrentSize" class="product-chooseColor">{{ gerCurrentSize.size }}</div>
+            <div v-else class="product-chooseColor">Pick Size ...</div>
         </div>
         <div v-if="dropdown" class="product-dropdown-chooser">
-            <div @click="setSize('XXL')">XXL</div>
-            <div @click="setSize('XL')">XL</div>
-            <div @click="setSize('L')">L</div>
-            <div @click="setSize('M')">M</div>
-            <div @click="setSize('S')">S</div>
+            <div v-for="obj in getSizes" @click="setSize(obj.size)">{{ obj.size }}</div>
         </div>
     </div>
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
+
     export default {
         name: "SizePicker",
 
         data(){ return {
             dropdown: false,
-            currentChoose: null,
         }},
+
+        computed: mapGetters(['getSizes', 'gerCurrentSize']),
 
         methods: {
             setSize(value){
-                this.currentChoose = value
+                this.$store.commit('SET_CURRENT_SIZE', {size: value});
             },
 
             toggleDropdown (e) {
@@ -42,10 +42,6 @@
                 }
             }
         },
-
-        mounted(){
-            this.setSize('M');
-        }
     }
 </script>
 

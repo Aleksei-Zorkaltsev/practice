@@ -12,8 +12,6 @@ import Login from "./components/Auth/Login"
 import Account from "./components/Account/MainAccount";
 import Admin from "./components/Admin/MainAdmin";
 
-import route_vuex from "./modules/route_vuex";
-
 const routes = [
     {
         path: "/admin",

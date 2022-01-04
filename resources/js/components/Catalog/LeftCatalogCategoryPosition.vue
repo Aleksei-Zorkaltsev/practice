@@ -18,8 +18,7 @@
 </template>
 
 <script>
-    import vueRouter from "../../VueRouter";
-    import { mapActions, mapGetters } from 'vuex';
+    import { mapActions } from 'vuex';
 
     export default {
         name: "LeftCatalogCategoryPosition",

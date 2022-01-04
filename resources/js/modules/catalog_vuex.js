@@ -53,19 +53,19 @@ export default {
     actions: {
 
         resetStateSettings(ctx){
-            ctx.commit('defaultSettings');
+            ctx.commit('SET_DEFAULT_SETTINGS');
         },
 
         getProducts(ctx, url){
 
-            if(url) { ctx.commit('setRequestUrl', url) }
+            if(url) { ctx.commit('SET_REQUEST_URL', url) }
             else { ctx.dispatch('buildApiRequest_Url') }
 
             axios.get(ctx.state.catalog_request_url)
                 .then(response => {
-                    ctx.commit('setPaginationValues', response.data);
-                    ctx.commit('addInProducts', response.data);
-                    ctx.commit('setRequestUrl', null)
+                    ctx.commit('SET_PAGINATION', response.data);
+                    ctx.commit('SET_STORE_CATALOG_PRODUCTS', response.data);
+                    ctx.commit('SET_REQUEST_URL', null)
                 })
                 .catch(e => {
                     console.log(e)
@@ -83,15 +83,15 @@ export default {
                             ${ctx.state.catalog_brands_id}/
                             ${ctx.state.catalog_designers_id}/`.replace(/\s+/g, '');
 
-            ctx.commit('setRequestUrl', complete_Url)
+            ctx.commit('SET_REQUEST_URL', complete_Url)
         },
 
         initCatalog(ctx){
             if(Object.keys(ctx.rootState.routeModule.route.query).length){
                 vueRouter.push(ctx.rootState.routeModule.route.path);
-            }
+            } // сделать позже перезагрузку страницы с Query параметрами.
 
-            ctx.commit('setUserCategory', ctx.rootState.routeModule.route.path.replace('/',''));
+            ctx.commit('SET_USER_CATEGORY', ctx.rootState.routeModule.route.path.replace('/',''));
 
             let initUrl  = `${location.origin}/Api/catalog/init
                             ${ctx.rootState.routeModule.route.path}/
@@ -101,9 +101,9 @@ export default {
 
             axios.get(initUrl)
                 .then(response => {
-                    ctx.commit('setFilterProperties', response.data.filterProperty)
-                    ctx.commit('setPaginationValues', response.data.products);
-                    ctx.commit('addInProducts', response.data.products);
+                    ctx.commit('SET_FILTER_PROPERTIES', response.data.filterProperty)
+                    ctx.commit('SET_PAGINATION', response.data.products);
+                    ctx.commit('SET_STORE_CATALOG_PRODUCTS', response.data.products);
                 })
                 .catch(error => {
                     console.log(error)
@@ -114,7 +114,7 @@ export default {
             if(ctx.rootState.routeModule.route.query[`${obj.category}`] === obj.name){
                 return;
             }
-            ctx.commit('updateFilterCategoryId', {
+            ctx.commit('UPDATE_FILTER_CATEGORY_ID', {
                 catalog_field: `catalog_${obj.category}_id`,
                 id: obj.id
             })
@@ -136,16 +136,15 @@ export default {
 
     mutations: {
 
-        updateFilterCategoryId(state, data){
+        UPDATE_FILTER_CATEGORY_ID(state, data){
             // data.catalog_field = *
-            // * = catalog_categories_id
-            // * = catalog_brands_id
-            // * = catalog_designers_id
-
+            // * => catalog_categories_id
+            // * => catalog_brands_id
+            // * => catalog_designers_id
             state[data.catalog_field] = data.id
         },
 
-        setFilterProperties(state, properties){
+        SET_FILTER_PROPERTIES(state, properties){
             let arr = Object.entries(properties)
             arr.forEach((element)=>{
                 Vue.set(state.catalog_dataFilterProperty, element[0], {
@@ -155,18 +154,18 @@ export default {
             })
         },
 
-        setRequestUrl(state, url){
+        SET_REQUEST_URL(state, url){
             state.catalog_request_url = url
         },
 
-        addInProducts(state, response){
+        SET_STORE_CATALOG_PRODUCTS(state, response){
             state.catalog_products = [];
             response.data.forEach((product) => {
                 state.catalog_products.push(product)
             })
         },
 
-        setPaginationValues(state, pagination_data){
+        SET_PAGINATION(state, pagination_data){
             if(pagination_data.first_page_url.match('catalog/init')){
                 if(pagination_data.prev_page_url) pagination_data.prev_page_url = pagination_data.prev_page_url.replace('catalog/init', 'catalog');
                 if(pagination_data.next_page_url) pagination_data.next_page_url = pagination_data.next_page_url.replace('catalog/init', 'catalog');
@@ -185,15 +184,15 @@ export default {
             Vue.set(state.catalog_pagination, 'links' , filteredLinks);
         },
 
-        setUserCategory(state, user_category){
+        SET_USER_CATEGORY(state, user_category){
             state.catalog_user_category = user_category;
         },
 
-        changeCatalogCategory(state, category){
+        CHANGE_CATALOG_CATEGORY(state, category){
             state.catalog_category = category
         },
 
-        defaultSettings(state){
+        SET_DEFAULT_SETTINGS(state){
             state.catalog_categories_id = null
             state.catalog_brands_id = null
             state.catalog_designers_id = null

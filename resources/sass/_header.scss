@@ -65,6 +65,7 @@
     }
 
     .browse {
+        margin: 0;
         display: block;
         width: 86px;
         height: inherit;
@@ -75,19 +76,6 @@
         font-weight: 300;
         line-height: 35px;
         letter-spacing: 0.35px;
-
-        &:hover {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 100%);
-        }
-
-        i {
-            color: gray;
-            margin-left: 8px;
-        }
-
-        &:active {
-            color: $themePageColor;
-        }
     }
 
     .searchtop {

@@ -4,7 +4,7 @@
         <div v-if="getProduct">
             <div class="single_prew">
                 <img v-if="getProduct.img" :src="`../storage/${getProduct.img}`" alt="">
-                <img v-else :src="defaultImg" alt="img">
+                <img v-else :src="getDefaultCatalogImg" alt="img">
             </div>
             <div class="single_infoItem">
                 <div class="single_ContainerInfo">
@@ -13,7 +13,7 @@
                         <div class="decorationline_red"></div>
                     </div>
                     <h3>{{ getProduct.product_name }}</h3>
-                    <p v-if="getProduct.describe"> {{ getProduct.describe }} </p>
+                    <p v-if="getProduct.description"> {{ getProduct.description }} </p>
                     <p v-else>No describes</p>
                     <div class="single_spectfic_Item">
                         <div class="spectficItem_characteristic">
@@ -35,7 +35,14 @@
                             <v-size-picker></v-size-picker>
                             <v-quantity-picker></v-quantity-picker>
                         </div>
-                        <button class="buttonAddtoCartSingle" @click.prevent=""><img :src="`../storage/img/Forma_1_copy.png`" alt="cart">Add to Cart</button>
+                        <button class="buttonAddtoCartSingle" @click.prevent="addToCart({
+                            product: getProduct,
+                            color: getCurrentColor,
+                            size: gerCurrentSize
+                        })">
+                            <img :src="getProductButtonAddCartIco" alt="cart">
+                            Add to Cart
+                        </button>
                     </form>
                 </div>
             </div>
@@ -53,19 +60,25 @@
 
     export default {
         name: "MainProduct",
-        data(){
-            return {
-                defaultImg: '../storage/img/def_Product.jpg'
-            }
-        },
         components: {
             'v-breadcrumbs': ProductBreadcrumbs,
             'v-color-picker': ColorPicker,
             'v-size-picker': SizePicker,
             'v-quantity-picker': QuantityPicker
         },
-        computed: mapGetters(['getProduct']),
-        methods: mapActions(['getApiProduct']),
+
+        computed: mapGetters([
+            'getProduct',
+            'getProductButtonAddCartIco',
+            'getDefaultCatalogImg',
+            'getCurrentColor',
+            'gerCurrentSize'
+        ]),
+
+        methods: mapActions([
+            'getApiProduct',
+            'addToCart'
+        ]),
 
         mounted(){
             let id = this.$route.params.pathMatch.replace('/','');

@@ -55,10 +55,10 @@
             $route(to, from) {
                 if(to.path !== from.path || to.path === from.path && Object.keys(to.query).length === 0){
                     this.$store.dispatch('resetStateSettings');
-                    this.$store.commit('setUserCategory', to.path.replace("/", ""))
+                    this.$store.commit('SET_USER_CATEGORY', to.path.replace("/", ""))
 
                 } else {
-                    this.$store.commit('changeCatalogCategory', to.query.categories);
+                    this.$store.commit('CHANGE_CATALOG_CATEGORY', to.query.categories);
                 }
                 this.$store.dispatch('getProducts')
             }

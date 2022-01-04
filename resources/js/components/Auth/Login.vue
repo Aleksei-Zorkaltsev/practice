@@ -31,11 +31,11 @@
             ...mapActions(['login']),
 
             updateEmail(e){
-                this.$store.commit('loginEmailUpdate', e.target.value)
+                this.$store.commit('LOGIN_FORM_EMAIL_UPDATE', e.target.value)
             },
 
             updatePassword(e){
-                this.$store.commit('loginPasswordUpdate', e.target.value)
+                this.$store.commit('LOGIN_FORM_PASSWORD_UPDATE', e.target.value)
             }
         },
     }

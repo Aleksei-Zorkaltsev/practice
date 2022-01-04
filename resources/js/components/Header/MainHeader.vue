@@ -4,10 +4,10 @@
                 <header-logo></header-logo>
                 <header-search></header-search>
                 <div class="header_Cart_Account">
-                    <router-link class="button-toAdmin" v-if="isAdmin" to="/admin"><img :src="`../storage/img/icon/admin_ico.png`"></router-link>
+                    <router-link class="button-toAdmin" v-if="getIsAdmin" to="/admin"><img :src="getAdminIco"></router-link>
                     <router-link class="cart" to="/cart">
-                        <img :src="imgCart" alt="cart">
-                        <span>{{ count_in_cart }}</span>
+                        <img :src="getCartIco" alt="cart">
+                        <span>{{ getCountProductInCart }}</span>
                     </router-link>
                     <div v-if="getStateUser" class="cart" ref="optionAccountList">
                         <button @click.prevent="toggleDropdown($event)">MyAccount<i class="fa fa-caret-down" aria-hidden="true"></i></button>
@@ -28,14 +28,12 @@
 <script>
     import logo from "./Logo"
     import topSearch from "./Search"
-    import {mapActions, mapGetters} from 'vuex'
+    import { mapActions, mapGetters } from 'vuex'
 
     export default {
         name: "Header",
         data(){
             return {
-                isAdmin: true,
-                count_in_cart: 0,
                 showDropdown: false,
                 imgCart: '../storage/img/icon/cart.png',
         }},
@@ -44,7 +42,7 @@
             'header-search': topSearch,
         },
 
-        computed: mapGetters(['getStateUser']),
+        computed: mapGetters(['getStateUser', 'getIsAdmin', 'getCartIco', 'getAdminIco', 'getCountProductInCart']),
         methods: {
             ...mapActions(['logout']),
 

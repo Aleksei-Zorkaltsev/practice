@@ -14,6 +14,7 @@
     import header from "./components/Header/MainHeader"
     import top_nav from "./components/Header/Nav"
     import footer from "./components/Footer/MainFooter"
+    import { mapActions } from "vuex"
 
     export default {
         name: "VueLayout",
@@ -23,25 +24,15 @@
             'v-top-nav': top_nav,
             'v-footer': footer,
         },
-        methods:{
-            setStoreUser(){
-                if (this.authUser) this.$store.commit('setUser', this.authUser);
-            },
-
-            setStoreRoute(){
-                this.$store.commit('SET_ROUTE', this.$route);
-                this.$router.beforeEach((to, from, next) => {
-                    this.$store.commit('SET_ROUTE', to);
-                    next();
-                });
-            }
-        },
+        methods: mapActions(['setStoreUser', 'setStoreRoute']),
 
         mounted() {
-            this.setStoreUser()
-            this.setStoreRoute()
+            this.setStoreUser(this.authUser)
+            this.setStoreRoute({
+                router: this.$router,
+                route: this.$route
+            })
         },
-
     }
 </script>
 

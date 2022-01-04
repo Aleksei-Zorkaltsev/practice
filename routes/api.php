@@ -22,14 +22,12 @@ use App\Http\Controllers\Api\v1\Admin\AdminController as AdminController;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Auth::routes();
+
 Route::get('admin_status', [AdminController::class, 'checkAdmin']);
 
 Route::group(['prefix' => 'admin','middleware' => 'admin'], function(){
