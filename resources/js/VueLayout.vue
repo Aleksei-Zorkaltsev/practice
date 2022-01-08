@@ -1,4 +1,4 @@
-<script src="services/getUserApi.js"></script>
+ww<script src="services/getUserApi.js"></script>
 <template>
     <div>
         <v-header></v-header>
@@ -24,7 +24,7 @@
             'v-top-nav': top_nav,
             'v-footer': footer,
         },
-        methods: mapActions(['setStoreUser', 'setStoreRoute']),
+        methods: mapActions(['setStoreUser', 'setStoreRoute', 'initCart']),
 
         mounted() {
             this.setStoreUser(this.authUser)
@@ -32,6 +32,7 @@
                 router: this.$router,
                 route: this.$route
             })
+            this.initCart()
         },
     }
 </script>

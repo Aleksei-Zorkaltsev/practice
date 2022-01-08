@@ -40,6 +40,7 @@ export default {
                 .then(response => {
                     context.commit('REMOVE_USER');
                     context.commit('UNSET_ADMIN');
+                    context.commit('RESET_CART_PRODUCTS');
                     if(vueRouter.app.$route.path !== '/') vueRouter.push('/')
                 })
                 .catch(err => {

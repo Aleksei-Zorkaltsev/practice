@@ -6,7 +6,7 @@
             <div v-else class="product-chooseColor">Pick Size ...</div>
         </div>
         <div v-if="dropdown" class="product-dropdown-chooser">
-            <div v-for="obj in getSizes" @click="setSize(obj.size)">{{ obj.size }}</div>
+            <div v-for="obj in getSizes" :key="obj.id" @click="setSize(obj.id, obj.size)">{{ obj.size }}</div>
         </div>
     </div>
 </template>
@@ -24,8 +24,11 @@
         computed: mapGetters(['getSizes', 'gerCurrentSize']),
 
         methods: {
-            setSize(value){
-                this.$store.commit('SET_CURRENT_SIZE', {size: value});
+            setSize(id, size){
+                this.$store.commit('SET_CURRENT_SIZE', {
+                    id: id,
+                    size: size
+                });
             },
 
             toggleDropdown (e) {

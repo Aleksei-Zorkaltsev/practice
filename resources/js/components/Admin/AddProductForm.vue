@@ -66,7 +66,6 @@
                 categories_list: null,
                 user_category_list: null,
                 designers_list: null,
-
                 status: null
             }
         },
@@ -76,8 +75,7 @@
 
                 axios.post('/Api/admin/products', this.form)
                     .then(response => {
-                        console.log(response)
-                            this.status = response.data.status
+                        this.status = response.data.status
                         this.resetForm();
                     }).catch(err => {
                     console.log(err)

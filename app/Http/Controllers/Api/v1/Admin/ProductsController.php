@@ -44,7 +44,7 @@ class ProductsController extends Controller
     {
         $validator = Validator::make(
             $request->all(),[
-                'product_name' => ['required'],
+                "product_name" => ['required'],
                 "category_id" => ['required'],
                 "brand_id" => ['required'],
                 "designer_id" => ['required'],
@@ -72,7 +72,7 @@ class ProductsController extends Controller
                 "img" => $request->img
         ]);
         $answer = [
-            "status" => "true",
+            "status" => true,
             "product" => $product
         ];
         return response()->json($answer);
@@ -90,7 +90,9 @@ class ProductsController extends Controller
             ->join('brands', 'products.brand_id', '=', 'brands.id')
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->join('designers', 'products.designer_id', '=', 'designers.id')
-            ->select('products.product_name as product_name',
+            ->select(
+                'products.id as id',
+                'products.product_name as product_name',
                 'products.price as price',
                 'products.describes as describe',
                 'products.material as material',

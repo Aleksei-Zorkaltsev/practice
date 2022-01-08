@@ -19,9 +19,10 @@ class CreateCartListTable extends Migration
             $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('size_id')->unsigned();
             $table->bigInteger('color_id')->unsigned();
+            $table->integer('quantity')->unsigned();
             $table->timestamps();
 
-            $table->foreign('cart_id')->references('id')->on('cart')->onUpdate('cascade');
+            $table->foreign('cart_id')->references('id')->on('carts')->onUpdate('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade');
             $table->foreign('color_id')->references('id')->on('colors')->onUpdate('cascade');
             $table->foreign('size_id')->references('id')->on('sizes')->onUpdate('cascade');

@@ -35,10 +35,12 @@
                             <v-size-picker></v-size-picker>
                             <v-quantity-picker></v-quantity-picker>
                         </div>
+                        <p v-if="getError_cartAdd">{{ getError_cartAdd.message }}</p>
                         <button class="buttonAddtoCartSingle" @click.prevent="addToCart({
-                            product: getProduct,
-                            color: getCurrentColor,
-                            size: gerCurrentSize
+                            product_id: getProduct.id,
+                            color_id: getColorId,
+                            size_id: getSizeId,
+                            quantity: getQuantity,
                         })">
                             <img :src="getProductButtonAddCartIco" alt="cart">
                             Add to Cart
@@ -72,17 +74,21 @@
             'getProductButtonAddCartIco',
             'getDefaultCatalogImg',
             'getCurrentColor',
-            'gerCurrentSize'
+            'gerCurrentSize',
+            'getColorId',
+            'getSizeId',
+            'getQuantity',
+            'getError_cartAdd'
         ]),
 
         methods: mapActions([
-            'getApiProduct',
+            'initSingleProduct',
             'addToCart'
         ]),
 
         mounted(){
-            let id = this.$route.params.pathMatch.replace('/','');
-            this.$store.dispatch('getApiProduct', id);
+            let id = +this.$route.params.pathMatch.replace('/','');
+            this.$store.dispatch('initSingleProduct', id);
         }
     }
 </script>

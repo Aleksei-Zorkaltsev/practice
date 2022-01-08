@@ -2,7 +2,7 @@
     <div class="single_ChoiseUser">
         <h3>CHOOSE COLOR</h3>
         <div class="single_userColor" @click="toggleDropdown($event)">
-            <div v-if="currentColorName"  class="product-chooseColor">
+            <div v-if="getCurrentColor"  class="product-chooseColor">
                 <span class="product-selectColorPrev" :style="`background-color: ${getCurrentColor.code}`"></span>
                 <span>{{ getCurrentColor.color }} </span>
             </div>
@@ -11,7 +11,7 @@
             </div>
         </div>
         <div v-if="dropdown" class="product-dropdown-chooser">
-            <div v-for="color in getColors" :key="color.id" @click="setColor(color.name, color.color_code)">
+            <div v-for="color in getColors" :key="color.id" @click="setColor(color.id, color.name, color.color_code)">
                 <span class="product-selectColorPrev" :style="`background-color: ${color.color_code}`"></span>
                 <span> {{color.name}} </span>
             </div>
@@ -26,22 +26,19 @@
         name: "ColorPicker",
         data(){ return {
             dropdown: false,
-            currentColorName: null,
-            currentColor: null,
         }},
 
         computed: mapGetters(['getColors', 'getCurrentColor']),
 
         methods: {
-            ...mapActions([]),
 
-            setColor(name, code){
+            setColor(id, name, code){
+
                 this.$store.commit('SET_CURRENT_COLOR', {
+                    id: id,
                     color: name,
                     code: code,
                 })
-                this.currentColorName = name
-                this.currentColor = code
             },
 
             toggleDropdown (e) {

@@ -12927,10 +12927,17 @@ textarea.form-control-lg {
   font-size: 13px;
 }
 
-.cart_action a {
+.cart_action button {
+  border: none;
+  outline: none;
+  background: none;
   color: #c0c0c0;
   font-size: 16px;
   font-weight: 400;
+  width: content-box;
+}
+.cart_action button:hover {
+  color: #6f6e6e;
 }
 
 .cartResetAndContinue {

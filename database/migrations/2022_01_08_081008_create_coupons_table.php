@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCartTable extends Migration
+class CreateCouponsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateCartTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('session_id');
-            $table->bigInteger('user_id')->unsigned()->nullable();
+        Schema::create('coupons', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('discount');
+            $table->string('code')->unique();
+            $table->enum('status', ['active', 'closed']);
+            $table->integer('quantity');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateCartTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cart');
+        Schema::dropIfExists('coupons');
     }
 }

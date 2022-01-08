@@ -9,7 +9,18 @@
                 <p>Subtotal</p>
                 <p>ACTION</p>
             </div>
-            <v-product-in-cart></v-product-in-cart>
+            <div v-if="getCartProducts" >
+                <v-product-in-cart v-for="item in getCartProducts" :key="item.id"
+                                   :item_id="item.id"
+                                   :color="item.color"
+                                   :size="item.size"
+                                   :quantity="item.quantity"
+                                   :price="item.product.price"
+                                   :name="item.product.product_name"
+                                   :img="item.product.img"
+                ></v-product-in-cart>
+            </div>
+            <h3 v-else style="text-align: center"> CART EMPTY </h3>
 
             <div class="cartResetAndContinue">
                 <button type="button">CLEAR SHOPPING CART</button>
@@ -17,7 +28,7 @@
             </div>
             <form class="cartShippingAdressForm" action="#">
                 <div class="shippindAdress">
-                    <h2>SHIPPING ADRESS</h2>
+                    <h2>SHIPPING ADDRESS</h2>
                     <select>
                         <option value="bd">Bangladesh</option>
                         <option value="us">United States</option>
@@ -37,8 +48,8 @@
                 </div>
                 <div class="cartGrandTotalSubmit">
                     <div>
-                        SUB TOTAL <span>$900</span>
-                        <p>GRAND TOTAL <span class="grand_totalPrice">$900</span></p>
+                        SUB TOTAL <span>$ {{ getSubTotal }} </span>
+                        <p>GRAND TOTAL <span class="grand_totalPrice">${{ getGrandTotal }}</span></p>
                         <button type="submit">PROCEED TO CHECKOUT</button>
                     </div>
                 </div>
@@ -49,12 +60,15 @@
 
 <script>
     import productCart from './ProductInCart'
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "MainCart",
         components: {
             'v-product-in-cart': productCart,
-        }
+        },
+
+        computed: mapGetters(['getCartProducts', 'getSubTotal', 'getGrandTotal']),
     }
 </script>
 

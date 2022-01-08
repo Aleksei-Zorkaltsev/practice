@@ -14,6 +14,7 @@ class ProductsController extends Controller
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->join('designers', 'products.designer_id', '=', 'designers.id')
             ->select('products.product_name as product_name',
+                'products.id as id',
                 'products.price as price',
                 'products.description as description',
                 'products.material as material',
@@ -34,7 +35,7 @@ class ProductsController extends Controller
         $data = [
             'product' => $product,
             'colors' => \DB::table('colors')->select('id', 'name', 'color_code')->get(),
-            'sizes' => \DB::table('sizes')->select('size')->get(),
+            'sizes' => \DB::table('sizes')->select('id', 'size')->get(),
         ];
         return response()->json($data);
     }
