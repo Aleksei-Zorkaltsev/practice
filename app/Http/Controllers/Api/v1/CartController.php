@@ -24,7 +24,23 @@ class CartController extends Controller
         return response()->json($data);
     }
 
+    protected function discount(Request $request){
+        $cartService = new CartService();
+        $data = $cartService->useCoupon($request);
+
+        return response()->json($data);
+    }
+
+    public function resetCart(){
+        $cartService = new CartService();
+        $cart = $cartService->getCart();
+        $data = $cartService->resetCart($cart->id);
+
+        return response()->json($data);
+    }
+
     public function deleteCartProduct(Request $request){
+
         try{
             \DB::table('cart_list')->where('id', $request->id)->delete();
         } catch (Exception $exception){
@@ -35,6 +51,7 @@ class CartController extends Controller
         }
         return response()->json([
             'status' => true,
+            'delete_id' => $request->id
         ]);
     }
 
@@ -98,8 +115,10 @@ class CartController extends Controller
             'product_id' => $request->product_id,
             'size_id' => $request->size_id,
             'color_id' => $request->color_id,
-            'quantity' => $request->quantity
-        ];
+            'quantity' => $request->quantity,
+            'updated_at' => date('Y.m.d H:i:s'),
+            'created_at' => date('Y.m.d H:i:s')
+            ];
 
         try {
             \DB::table('cart_list')->insert($data);
@@ -113,7 +132,7 @@ class CartController extends Controller
 
         return response()->json([
             'status' => true,
-            'product' => $cartService->productData($data)
+            'product' => $cartService->getCartItem($data)
         ]);
     }
 }

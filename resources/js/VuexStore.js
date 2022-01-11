@@ -8,6 +8,7 @@ import catalogModule from "./modules/catalog_vuex";
 import routeModule from "./modules/route_vuex"
 import defaultImgs from "./modules/default_imgs_vuex";
 import cartModule from "./modules/cart_vuex";
+import checkoutModule from "./modules/checkout_vuex";
 
 
 Vue.use(Vuex)
@@ -22,6 +23,7 @@ const store = new Vuex.Store({
         routeModule,
         defaultImgs,
         cartModule,
+        checkoutModule,
     },
 })
 export default store;

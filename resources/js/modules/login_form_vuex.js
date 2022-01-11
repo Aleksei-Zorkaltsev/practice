@@ -14,7 +14,7 @@ export default {
         }
     },
     actions: {
-        login(context){
+        login(context, way){
 
             axios.post('/Api/login', {
                     email: context.state.login_email,
@@ -28,7 +28,7 @@ export default {
                             context.commit('SET_LOGIN_ERROR', null)
                             context.dispatch('setStoreUser', user);
                             context.dispatch('initCart');
-                            vueRouter.push('/')
+                            vueRouter.push(`/${way}`)
                         })
                     }
                 })

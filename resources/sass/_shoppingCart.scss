@@ -157,7 +157,7 @@
     }
 }
 
-.cartShippingAdressForm {
+.cartShippingAddressForm {
     display: flex;
     justify-content: space-between;
     margin-bottom: 100px;
@@ -185,11 +185,17 @@
         background-color: #ebebeb;
     }
 }
+.cart-coupon-discount {
+    h3 {
+        color: $textColorMain;
+        font-size: 16px;
+        font-weight: 900;
+        margin-bottom: 22px;
+    }
+}
 
-.shippindAdress {
+.shippingAddress {
     width: 355px;
-    display: flex;
-    flex-direction: column;
 
     h2 {
         color: $textColorMain;
@@ -210,9 +216,14 @@
         -moz-appearance: none;
         appearance: none;
         background: $arrowSelect;
+        width: 100%;
         //background: url(../img/arrowForSelect.png) no-repeat;
 
         background-position: right 8px center;
+    }
+    input {
+        display: block;
+        width: 100%;
     }
 
     select:focus {
@@ -233,8 +244,6 @@
 
 .cart_CouponDiscount {
     width: 355px;
-    display: flex;
-    flex-direction: column;
     color: #000000;
     font-size: 14px;
     font-weight: 300;
@@ -244,6 +253,10 @@
         font-size: 16px;
         font-weight: 900;
         margin-bottom: 22px;
+    }
+    input {
+        display: block;
+        width: 100%;
     }
 
     button {
@@ -255,6 +268,11 @@
         color: #4a4a4a;
         font-size: 11px;
         font-weight: 900;
+    }
+}
+.cart-content-table {
+    h3 {
+        margin: 20px;
     }
 }
 
@@ -284,19 +302,25 @@
         border-bottom: 1px solid #e2e2e2;
     }
 
-    button {
-        padding: 0;
+    a {
+        display: block;
+        text-align: center;
         width: inherit;
-        border: none;
-        outline: none;
         height: 50px;
         background-color: $themePageColor;
         color: white;
         font-size: 16px;
         font-weight: 700;
+        line-height: 50px;
         margin-top: 17px;
+        transition: text-shadow 0.3s;
+    }
+    a:hover {
+        color: white;
+        text-shadow: rgba(255, 255, 255, 0.73) 0 0 4px;
     }
 }
+
 
 .grand_totalPrice {
     color: $themePageColor;
@@ -319,4 +343,13 @@
 .product_serviseBlock {
     padding: 0 10px;
     text-align: center;
+}
+
+.inactive-cart-button {
+    color: $textColorMain !important;
+    background-color: $inactiveButtonsColor !important;
+}
+.inactive-cart-button:hover {
+    color: $textColorMain !important;
+    text-shadow: none !important;
 }

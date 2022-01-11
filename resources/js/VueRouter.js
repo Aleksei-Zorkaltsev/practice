@@ -11,6 +11,7 @@ import Registry from "./components/Auth/Registry"
 import Login from "./components/Auth/Login"
 import Account from "./components/Account/MainAccount";
 import Admin from "./components/Admin/MainAdmin";
+import Checkout from "./components/Checkout/MainCheckout";
 
 const routes = [
     {
@@ -52,6 +53,10 @@ const routes = [
     {
         path: '/cart',
         component: Cart,
+    },
+    {
+        path: '/checkout',
+        component: Checkout,
     }
 ]
 

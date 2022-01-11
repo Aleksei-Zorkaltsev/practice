@@ -2,28 +2,28 @@
     <div class="categories">
         <div class="container contanerCategories">
             <div class="hotdeal">
-                <a href="#" class="whiteboxCattegories">
+                <router-link to="/man" class="whiteboxCattegories">
                     HOT DEAL
                     <div>FOR MEN</div>
-                </a>
+                </router-link>
             </div>
             <div class="newArriwals">
-                <a href="#" class="whiteboxCattegories">
+                <router-link to="/kids" class="whiteboxCattegories">
                     NEW ARRIVALS
                     <div>FOR KIDS</div>
-                </a>
+                </router-link>
             </div>
             <div class="offer30">
-                <a href="#" class="whiteboxCattegories">
+                <router-link to="/woman" class="whiteboxCattegories">
                     30% OFFER
                     <div>WOMEN</div>
-                </a>
+                </router-link>
             </div>
             <div class="luxious">
-                <a href="#" class="whiteboxCattegories">
+                <router-link to="/accesories" class="whiteboxCattegories">
                     LUXIROUS &amp; TRENDY
                     <div>ACCESORIES</div>
-                </a>
+                </router-link>
             </div>
         </div>
     </div>

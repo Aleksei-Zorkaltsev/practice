@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\Size;
+use http\Env\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use mysql_xdevapi\Exception;
@@ -14,11 +15,39 @@ use mysql_xdevapi\Exception;
 class CartService
 {
 
+    public function useCoupon($request){
+
+        try {
+            $coupon = \DB::table('coupons')->where('code', $request->coupon)->first();
+
+            if(!$coupon){
+                return [
+                    'status' => false,
+                    'message' => 'Coupon code not found.'
+                ];
+            } else {
+                return [
+                    'status' => true,
+                    'coupon' => $coupon
+                ];
+            }
+        } catch(Exception $exception) {
+
+            return [
+                'status' => false,
+                'message' => $exception
+            ];
+        }
+    }
+
     public function changeQuantity($request){
         try {
             \DB::table('cart_list')
                 ->where('id', $request->cart_list_item_id)
-                ->update(['quantity' => $request->quantity]);
+                ->update([
+                    'quantity' => $request->quantity,
+                    'updated_at' => date('Y.m.d H:i:s'),
+                ]);
 
             return true;
         } catch (Exception $exception){
@@ -43,6 +72,20 @@ class CartService
         }
 
         return $cart;
+    }
+
+    public function resetCart($id){
+        try{
+            \DB::table('cart_list')->where('cart_id', $id)->delete();
+        } catch (Exception $exception){
+            return [
+                'status' => false,
+                'exception' => $exception
+            ];
+        }
+        return [
+            'status' => true,
+        ];
     }
 
     public function getCartId_Products($id){
@@ -72,7 +115,7 @@ class CartService
         return $data;
     }
 
-    public function productData($data){
+    public function getCartItem($data){
 
         // REWORK THIS SHIT !!!!!!!!!!!!!!! query builder!!!
         return [
@@ -85,7 +128,7 @@ class CartService
             'product' => Product::find($data['product_id']),
             'size' => Size::find($data['size_id'])->size,
             'color' => Color::find($data['color_id'])->name,
-            'quantity' => $data['quantity']
+            'quantity' => $data['quantity'],
         ];
     }
 

@@ -49,7 +49,6 @@
                 if (event.target.value <= 0) { event.target.value = 1 }
                 else if (event.target.value > 99) { event.target.value = 99 }
 
-                console.log(id)
                 this.changeProductCartQuantity({
                     id: id,
                     value: +event.target.value

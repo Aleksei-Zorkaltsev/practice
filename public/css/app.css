@@ -12975,12 +12975,12 @@ textarea.form-control-lg {
   background-color: #eaeaea;
 }
 
-.cartShippingAdressForm {
+.cartShippingAddressForm {
   display: flex;
   justify-content: space-between;
   margin-bottom: 100px;
 }
-.cartShippingAdressForm input {
+.cartShippingAddressForm input {
   margin-top: 20px;
   padding-left: 17px;
   height: 45px;
@@ -12990,28 +12990,33 @@ textarea.form-control-lg {
   font-size: 13px;
   font-weight: 300;
 }
-.cartShippingAdressForm input:focus {
+.cartShippingAddressForm input:focus {
   outline: none;
 }
-.cartShippingAdressForm button:focus {
+.cartShippingAddressForm button:focus {
   outline: none;
 }
-.cartShippingAdressForm button:active {
+.cartShippingAddressForm button:active {
   background-color: #ebebeb;
 }
 
-.shippindAdress {
-  width: 355px;
-  display: flex;
-  flex-direction: column;
-}
-.shippindAdress h2, .shippindAdress .h2 {
+.cart-coupon-discount h3, .cart-coupon-discount .h3 {
   color: #222222;
   font-size: 16px;
   font-weight: 900;
   margin-bottom: 22px;
 }
-.shippindAdress select {
+
+.shippingAddress {
+  width: 355px;
+}
+.shippingAddress h2, .shippingAddress .h2 {
+  color: #222222;
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 22px;
+}
+.shippingAddress select {
   padding-left: 17px;
   height: 45px;
   border: 1px solid #eaeaea;
@@ -13023,12 +13028,17 @@ textarea.form-control-lg {
   -moz-appearance: none;
   appearance: none;
   background: url(/images/arrowForSelect.png?9474c6304fa47d7bcc1b3ea786cf27e3) no-repeat;
+  width: 100%;
   background-position: right 8px center;
 }
-.shippindAdress select:focus {
+.shippingAddress input {
+  display: block;
+  width: 100%;
+}
+.shippingAddress select:focus {
   outline: none;
 }
-.shippindAdress button {
+.shippingAddress button {
   width: 100px;
   height: 35px;
   margin-top: 23px;
@@ -13041,8 +13051,6 @@ textarea.form-control-lg {
 
 .cart_CouponDiscount {
   width: 355px;
-  display: flex;
-  flex-direction: column;
   color: #000000;
   font-size: 14px;
   font-weight: 300;
@@ -13053,6 +13061,10 @@ textarea.form-control-lg {
   font-weight: 900;
   margin-bottom: 22px;
 }
+.cart_CouponDiscount input {
+  display: block;
+  width: 100%;
+}
 .cart_CouponDiscount button {
   width: 118px;
   height: 35px;
@@ -13062,6 +13074,10 @@ textarea.form-control-lg {
   color: #4a4a4a;
   font-size: 11px;
   font-weight: 900;
+}
+
+.cart-content-table h3, .cart-content-table .h3 {
+  margin: 20px;
 }
 
 .cartGrandTotalSubmit {
@@ -13087,17 +13103,22 @@ textarea.form-control-lg {
   padding: 14px 0;
   border-bottom: 1px solid #e2e2e2;
 }
-.cartGrandTotalSubmit button {
-  padding: 0;
+.cartGrandTotalSubmit a {
+  display: block;
+  text-align: center;
   width: inherit;
-  border: none;
-  outline: none;
   height: 50px;
   background-color: #f16d7f;
   color: white;
   font-size: 16px;
   font-weight: 700;
+  line-height: 50px;
   margin-top: 17px;
+  transition: text-shadow 0.3s;
+}
+.cartGrandTotalSubmit a:hover {
+  color: white;
+  text-shadow: rgba(255, 255, 255, 0.73) 0 0 4px;
 }
 
 .grand_totalPrice {
@@ -13121,6 +13142,16 @@ textarea.form-control-lg {
 .product_serviseBlock {
   padding: 0 10px;
   text-align: center;
+}
+
+.inactive-cart-button {
+  color: #222222 !important;
+  background-color: #cdcdcd !important;
+}
+
+.inactive-cart-button:hover {
+  color: #222222 !important;
+  text-shadow: none !important;
 }
 
 .review {
