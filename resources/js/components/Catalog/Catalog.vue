@@ -1,25 +1,23 @@
 <template>
     <div class="catalog_items">
-        <product-item v-for="product in products" :key="product.id"
+        <catalog-item v-if="products" v-for="product in products" :key="product.id"
                       :product_id="product.id"
                       :product_name="product.product_name"
                       :price="product.price"
                       :img="product.img"
-        ></product-item>
+        ></catalog-item>
+        <p v-else> No result </p>
     </div>
 </template>
 
 <script>
-    import itemProduct from "./ItemProduct";
+    import itemCatalog from "./ItemCatalog";
 
     export default {
         name: "catalog",
         props: ['products'],
-        data(){
-            return{}
-        },
         components: {
-            'product-item': itemProduct,
+            'catalog-item': itemCatalog,
         },
     }
 </script>

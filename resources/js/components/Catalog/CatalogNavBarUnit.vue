@@ -1,13 +1,21 @@
 <template>
     <div class="navbar_catalogUnit">
         <p>{{ featureName }}</p>
-        <select class="catalogNavbar-dropdown" @change="changeCurrent(featureValue)" v-model="current" :value="current">
+        <select class="catalogNavbar-dropdown"
+                @change="changeNavbarOption({
+                        value: featureValue,
+                        current:current
+                    })"
+                v-model="current"
+                :value="current">
             <option v-for="item in listChoices">{{ item }}</option>
         </select>
     </div>
 </template>
 
 <script>
+    import { mapActions, mapGetters } from 'vuex'
+
     export default {
         name: "CatalogNavBarShowUnit",
         props: ['featureName', 'listChoices', 'featureValue'],
@@ -16,18 +24,9 @@
                 current: null,
             }
         },
-        methods: {
+        computed: mapGetters(['']),
+        methods: mapActions(['changeNavbarOption']),
 
-            /**
-             * @param value
-             * value = name property. Function dynamic call property Catalog, change property and call products
-             */
-            changeCurrent(value){
-                this.$parent.$parent['current_'+ value] = this.current === 'Name' ? 'product_name' : this.current.toLowerCase();
-                this.$parent.$parent.getProducts();
-            },
-
-        },
         mounted(){
             this.current = this.listChoices[0]; // set default
         }

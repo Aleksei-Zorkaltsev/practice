@@ -14,7 +14,7 @@
             <!-- ссылки на страницы -->
             <a v-for="link in pagination.links"
                 :href="link.url"
-                :key="link.label"
+                :key="link.url"
                 @click.prevent="getPaginateProducts(link.url)">
                 <span v-if="link.label" :class="{ thisActivePage: pagination.current_page === +link.label}">{{ link.label }}</span>
             </a>
@@ -51,10 +51,10 @@
 
         methods: {
             getPaginateProducts(url){
-                this.$parent.getProducts(url);
+                if(!url) return;
+                this.$store.dispatch('getProducts', url);
             },
         },
-
     }
 </script>
 

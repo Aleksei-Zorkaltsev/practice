@@ -2,30 +2,26 @@
     <div class="item" :data-id="product_id">
         <div class="prewiewITemImage">
             <div class="hoverItem">
-                <a href="#" class="AddCart"><img class="AddCartimg":src="addCart_icon" alt="cart"> Add to Cart</a>
+                <router-link :to="`products/${product_id}`" class="AddCart"> Details </router-link>
             </div>
             <img class="preview_img_item" v-if="img" :src="setImg(img)" alt="prew">
-            <img class="preview_img_item" v-else :src="defaultImg" alt="default">
+            <img class="preview_img_item" v-else :src="getDefaultCatalogImg" alt="default">
         </div>
-        <h3 class="nameItem">{{ product_name }}</h3>
+        <h3 class="nameItem"><router-link :to="`products/${product_id}`">{{ product_name }}</router-link></h3>
         <div class="price">{{ price }}</div>
     </div>
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
+
     export default {
         name: "ItemProduct",
         props: ['product_name', 'price', 'img', 'product_id'],
 
-        data(){
-            return{
-                addCart_icon: '../storage/img/icon/addToCart.png',
-                defaultImg: '../storage/img/def_Product.jpg',
-            }
-        },
+        computed: mapGetters(['getDefaultCatalogImg']),
 
         methods:{
-
             setImg(img){
                 return `../storage/${img}`;
             },

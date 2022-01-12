@@ -1,6 +1,6 @@
 <template>
     <div class="logo">
-        <a href="#">BRAN<span>D</span></a>
+        <router-link to="/">BRAN<span>D</span></router-link>
     </div>
 </template>
 

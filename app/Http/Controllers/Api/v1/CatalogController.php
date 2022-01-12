@@ -14,8 +14,6 @@ class CatalogController extends Controller
 {
     public function getCatalogProducts($user_category, $paginate, $sortType, $category_id, $brand_id, $designer_id)
     {
-
-
         $data = Product::where('user_category', $user_category)
             ->when(($category_id !== 'null'), function ($query) use ($category_id){
                 return $query->where('category_id', $category_id);
@@ -33,6 +31,7 @@ class CatalogController extends Controller
     }
 
     public function init($user_category, $paginate, $sortType){
+
         $data = [
             'products' => Product::where('user_category', $user_category)->orderBy($sortType)->paginate($paginate),
             'filterProperty' => [
@@ -41,6 +40,7 @@ class CatalogController extends Controller
                 'designers' => Designer::all(),
             ],
         ];
+
         return response()->json($data);
     }
 }

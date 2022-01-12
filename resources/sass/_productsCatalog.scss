@@ -1,4 +1,6 @@
 .productsMain {
+    padding-top: 20px !important;
+    margin-bottom: 20px !important;
     display: grid;
     grid-gap: 30px;
     grid-template-columns: 243px 1fr;
@@ -7,7 +9,9 @@
         grid-template-columns: 1fr;
     }
 }
-
+.catalog_right{
+    position: relative;
+}
 .catalog {
     display: flex;
 }
@@ -166,6 +170,8 @@
     grid-template-columns: repeat(3, 262px);
     justify-content: space-between;
     min-height: 460px;
+    height: inherit !important;
+    padding-bottom: 50px !important;
 }
 
 .item {
@@ -257,6 +263,9 @@
 }
 
 .catalog_pagination {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     color: #c4c4c4;
@@ -268,7 +277,6 @@
     }
 
     div {
-        width: 261px;
         height: 44px;
         line-height: 44px;
         border-radius: 3px;
@@ -282,8 +290,6 @@
         font-size: 16px;
         font-weight: 700;
         line-height: 26px;
-
-
 
         .thisActivePage {
             color: $themePageColor;

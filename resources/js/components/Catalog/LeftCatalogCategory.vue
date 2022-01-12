@@ -15,17 +15,9 @@
     export default {
         name: "LeftCatalogNav",
         props: ['dataFilterProperty'],
-        data(){
-            return{}
-        },
-
         components: {
             'nav-catalog-filter': navPosition,
         },
-
-        methods: {
-
-        }
     }
 </script>
 

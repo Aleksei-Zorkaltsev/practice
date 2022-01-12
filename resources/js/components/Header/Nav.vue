@@ -25,18 +25,6 @@
                         title: 'KIDS',
                         href: '/kids'
                     },
-                    {
-                        title: 'ACCESSORIES',
-                        href: '/accessories'
-                    },
-                    {
-                        title: 'FEATURED',
-                        href: '/featured'
-                    },
-                    {
-                        title: 'HOT DEALS',
-                        href: '/hot_deals'
-                    },
                 ]
             }
         },

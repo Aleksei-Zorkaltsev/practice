@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('index');
 //});
-Auth::routes();
+
+
 Route::get('/{any}', function () {
-    return view('index');
+    return view('index', ['auth_user' => Auth::user()]);
 })->where('any', '.*');
 
 

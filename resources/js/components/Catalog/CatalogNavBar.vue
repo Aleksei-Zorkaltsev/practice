@@ -1,6 +1,6 @@
 <template>
     <div class="navbar_catalog">
-        <navbar-unit v-for="feature in featured" :key="feature.name"
+        <navbar-unit v-for="feature in getCatalogNavbarFeatured" :key="feature.name"
                      :feature-name="feature.name"
                      :list-choices="feature.list"
                      :feature-value="feature.value"
@@ -9,29 +9,15 @@
 </template>
 
 <script>
-    import unitNavbar from "./CatalogNavBarUnit"
+    import unitNavbar from './CatalogNavBarUnit'
+    import { mapGetters } from 'vuex'
 
     export default {
         name: "CatalogNavBar",
         components: {
             'navbar-unit': unitNavbar,
         },
-        data(){
-            return{
-                featured: [
-                    {
-                        name: 'Sort by',
-                        value: 'sort',
-                        list: ['Name', 'Price'],
-                    },
-                    {
-                        name: 'Show',
-                        value: 'show',
-                        list: [3, 6, 9],
-                    }
-                ]
-            }
-        }
+        computed: mapGetters(['getCatalogNavbarFeatured']),
     }
 </script>
 
