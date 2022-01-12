@@ -3,7 +3,6 @@
         <div class="container">
             <v-cart-content></v-cart-content>
             <div class="cartShippingAddressForm">
-                <v-cart-shipping></v-cart-shipping>
                 <v-cart-coupon></v-cart-coupon>
                 <v-cart-checkout></v-cart-checkout>
             </div>
